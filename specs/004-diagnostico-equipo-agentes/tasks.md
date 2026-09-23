@@ -9,6 +9,6 @@
 - [ ] T7. Preparar propuesta aprobable del piloto. **Hecho cuando:** alcance, exclusiones, precio, plazo, tratamiento de datos, métricas y riesgos constan como pendientes hasta decisión humana.
 - [ ] T8. Implementar piloto real, si se aprueba. **Hecho cuando:** controles de identidad, organización, secretos, retención, auditoría, pausa/recuperación, revisión de seguridad y criterios de aceptación se verifican.
 - [ ] T9. Revisar evidencia y decidir iteración. **Hecho cuando:** se registra continuar, ajustar o cerrar, con métricas y feedback.
-- [ ] T10. Publicar documentación revisada en GitHub. **Hecho cuando:** diffs y validaciones revisados, commit acotado, push explícitamente autorizado y remoto verificado.
+- [x] T10. Publicar documentación revisada en GitHub. **Hecho cuando:** diffs y validaciones revisados, commit acotado, push explícitamente autorizado y remoto verificado.
 
 - [x] T11. Estructurar el modelo operativo de los cinco roles. **Hecho cuando:** la spec y el modelo operativo definen por rol entrada, salida, límites y parada, y documentan la secuencia, puertas humanas y relación con el prototipo local.

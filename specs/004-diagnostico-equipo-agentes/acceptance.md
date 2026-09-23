@@ -12,7 +12,7 @@ Estado: especificación documental propuesta; implementación de agentes no inic
 | Primer vertical elegido con evidencia | pendiente | RF-011; requiere entrevistas y decisión comercial |
 | Arquitectura y proveedores elegidos | pendiente | Plan, decisiones técnicas del Blueprint |
 | Validación automatizada/E2E del workflow | pendiente | Este cambio solo añade documentación; ejecutar antes de publicar |
-| Cambios publicados en GitHub | pendiente | Requiere revisión, autorización de publicación y verificación remota |
+| Cambios publicados en GitHub | completado | commit dbacd5f en origin/main; remoto verificado tras push autorizado |
 
 | Contratos por rol con entrada, salida, límites y parada | documentado | spec.md, sección Contrato operativo por rol; docs/modelo-operativo-agentes.md |
 | Secuencia lógica y revisión independiente sin sexto agente automático | documentado | spec.md, secciones Contrato operativo y puertas; docs/modelo-operativo-agentes.md |
