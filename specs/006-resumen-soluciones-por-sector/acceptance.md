@@ -15,3 +15,7 @@
 | RF-011 | Mostrar soluciones posibles con alternativa sin IA y límites claros | Perfiles 04–05 y vista de landing | UI local muestra opciones orientativas; revisión y generación por agentes pendiente |
 
 La aceptación anterior verifica estructura documental. No prueba comportamiento, cumplimiento legal, calidad de proveedor ni compatibilidad de runtime. T6, T7 y T8 siguen pendientes.
+
+## Paquete local de subagentes Codex
+
+T11: seis archivos TOML presentes y con campos mínimos verificados estáticamente; las seis definiciones declaran `sandbox_mode = "read-only"`. Los seis TOML y las seis entradas de `.codex/config.toml` existen y pasan el parseo estático. El smoke test conductual del rol Investigador no confirma su descubrimiento: el CLI inició un subagente genérico y los comandos necesarios para leer la configuración del proyecto fueron bloqueados por las ACL/helper de PowerShell. Por tanto, T11 sigue pendiente hasta verificar los roles en el cliente de escritorio.

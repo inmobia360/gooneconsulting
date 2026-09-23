@@ -30,3 +30,19 @@ La revisión puede devolver cambios o bloquear. Sin fuentes aprobadas, no se hac
 - Pausar si falta autorización, cobertura o evidencia suficiente.
 
 Ver [especificación](../../specs/006-resumen-soluciones-por-sector/spec.md), [plan](../../specs/006-resumen-soluciones-por-sector/plan.md), [tareas](../../specs/006-resumen-soluciones-por-sector/tasks.md) y [aceptación](../../specs/006-resumen-soluciones-por-sector/acceptance.md).
+
+## Agentes de proyecto Codex
+
+El directorio `.codex/agents/` contiene seis definiciones de subagentes personalizados de solo lectura; `.codex/config.toml` registra los roles y sus archivos. Están preparados para clientes Codex locales compatibles con agentes de proyecto y un repositorio confiable; la sesión/CLI actual no permitió verificar su descubrimiento por un bloqueo de lectura del shell:
+
+- `sector_summary_director` — `.codex/agents/director-resumen-sectorial.toml`
+- `sector_researcher` — `.codex/agents/sector-researcher.toml`
+- `sector_process_analyst` — `.codex/agents/process-analyst.toml`
+- `sector_friction_analyst` — `friction-analyst.toml`
+- `sector_opportunity_designer` — `.codex/agents/opportunity-designer.toml`
+- `sector_evidence_reviewer` — `evidence-reviewer.toml`
+
+Son subagentes para el entorno de desarrollo Codex, no agentes productivos de la web. No fijan modelo, proveedor, MCP ni acceso de búsqueda; heredan las herramientas de la sesión, pero sus instrucciones y sandbox limitan el trabajo a lectura y fuentes aprobadas entregadas explícitamente. Consulta la [documentación oficial de subagentes Codex](https://learn.chatgpt.com/docs/agent-configuration/subagents).
+
+
+Para comprobarlos, abre una sesión nueva de Codex en este repositorio confiable y solicita explícitamente el rol por nombre. La prueba con el CLI local no pudo leer `.codex/config.toml` por un bloqueo del helper de PowerShell, por lo que queda pendiente confirmar la carga en el cliente de escritorio. El registro TOML y las instrucciones están versionados, pero esto aún no valida el comportamiento real de los seis roles.

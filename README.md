@@ -41,3 +41,6 @@ El modelo operativo de Diagnose estructura cinco roles lógicos secuenciales, su
 La landing puede ofrecer una orientación inicial transversal: el visitante elige un sector y recibe un resumen general de procesos y soluciones posibles. No es diagnóstico individual ni presupone el sector inmobiliario. El equipo especializado está documentado en [agents/sector-summary](agents/sector-summary/README.md) y [specs/006-resumen-soluciones-por-sector](specs/006-resumen-soluciones-por-sector/spec.md); los perfiles son documentos, todavía no agentes ejecutables.
 
 La sección local del selector muestra orientaciones fijas para los ocho sectores del catálogo y un estado sin cobertura para otros sectores. No está conectada todavía al runtime ni a fuentes del equipo de agentes.
+
+
+Los perfiles de resumen sectorial también incluyen configuraciones de subagentes Codex en `.codex/agents/`. Sirven para tareas dentro de Codex; no están conectadas al runtime público de la landing.

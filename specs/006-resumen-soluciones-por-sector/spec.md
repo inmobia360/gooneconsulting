@@ -74,3 +74,7 @@ Esta capacidad documental es de autonomía A0. Publicar fuentes, activar proveed
 2. ¿Qué proveedor/runtime y modelo se usarán y con qué controles de privacidad/coste?
 3. ¿La salida será solo borrador local o se publicará directamente en la web?
 4. ¿Qué catálogo de sectores y mecanismo de actualización se mantendrá?
+
+## Empaquetado para Codex
+
+Además de los perfiles portables, el repositorio puede incluir definiciones de subagentes de proyecto Codex para coordinación documental y análisis. Estas definiciones no son el runtime de la landing, no autorizan navegación externa y deben limitarse a lectura; la generación pública requiere completar T6 y T7.

@@ -37,3 +37,7 @@ La página debe presentar el resumen sin solicitar correo. Si el equipo bloquea 
 Aprobación del catálogo y fuentes, proveedor/runtime, política de retención y modo de publicación.
 
 Contratos versionados: salida pública agents/sector-summary/contracts/sector-summary.v0.1.schema.json; handoff entre agentes agents/sector-summary/contracts/agent-handoff.v0.1.schema.json.
+
+## Paquete de agentes de proyecto Codex
+
+Los seis roles portables están empaquetados como agentes personalizados de proyecto en `.codex/agents/*.toml`, con sandbox de solo lectura y sin proveedor o herramienta de búsqueda conectados. Esto facilita trabajo coordinado dentro de Codex y sigue separado del runtime de la web pública. Referencia de configuración: https://learn.chatgpt.com/docs/agent-configuration/subagents.
