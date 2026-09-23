@@ -1,0 +1,23 @@
+[agents.sector_summary_director]
+description = "Coordina el flujo documental de resumen sectorial con revisión y bloqueo por evidencia."
+config_file = "agents/director-resumen-sectorial.toml"
+
+[agents.sector_researcher]
+description = "Investiga solo en el paquete sectorial aprobado entregado en la tarea."
+config_file = "agents/sector-researcher.toml"
+
+[agents.sector_process_analyst]
+description = "Mapea procesos sectoriales desde hallazgos y fuentes aprobados."
+config_file = "agents/process-analyst.toml"
+
+[agents.sector_friction_analyst]
+description = "Formula fricciones condicionales ligadas a procesos y evidencia."
+config_file = "agents/friction-analyst.toml"
+
+[agents.sector_opportunity_designer]
+description = "Diseña alternativas de procesos, automatización e IA opcional con riesgos y validación."
+config_file = "agents/opportunity-designer.toml"
+
+[agents.sector_evidence_reviewer]
+description = "Revisa evidencia, referencias, límites y contratos de manera independiente."
+config_file = "agents/evidence-reviewer.toml"

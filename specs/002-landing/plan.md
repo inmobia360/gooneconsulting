@@ -9,6 +9,9 @@
 - Contacto por `mailto:contact@goonceconsulting.com`, con borrador editable; no se recoge información en el sitio ni se simula envío.
 - Mantener navegación por teclado, foco visible, movimiento reducido y textos de interfaz legibles.
 
+- Mostrar ideas iniciales al elegir un sector sin exigir correo; presentar alternativas de proceso, automatización e IA como posibilidades, no como diagnóstico.
+- Mantener la consulta por correo separada y opcional; no afirmar que el contenido fijo del prototipo proviene de los agentes.
+
 ## Secuencia
 
 1. Proponer el paquete inicial y separar compromisos definidos de datos comerciales aún pendientes.

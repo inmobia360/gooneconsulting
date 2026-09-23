@@ -115,7 +115,7 @@
           <li><span class="stage-number">06</span><h3>Decidir si escalar</h3><p>Go Once Business se ofrece si la evidencia y la decisión comercial lo respaldan.</p><small>Sin prometer lanzamiento</small></li>
         </ol>
         <div class="sector-explorer" id="sector-explorer" tabindex="-1">
-          <div class="sector-explorer-copy"><p class="eyebrow">EMPIEZA POR TU ACTIVIDAD</p><h3>¿En qué podemos ayudarte?</h3><p>Elige tu sector para ver ejemplos de procesos que podríamos analizar. No hace falta que sepas qué solución necesitas.</p></div>
+          <div class="sector-explorer-copy"><p class="eyebrow">EMPIEZA POR TU ACTIVIDAD</p><h3>¿En qué podemos ayudarte?</h3><p>Elige tu sector para ver posibles líneas de mejora. No hace falta que sepas qué solución necesitas.</p></div>
           <div class="sector-explorer-controls">
             <label class="sector-select-label" for="business-sector">Selecciona tu sector
               <select id="business-sector" name="business-sector">
@@ -136,11 +136,18 @@
             </label>
             <button class="other-sector-toggle" id="other-sector-toggle" type="button" aria-expanded="false" aria-controls="other-sector-wrap">Mi sector no aparece</button>
             <label class="other-sector-label" id="other-sector-wrap" for="other-sector" hidden>Escribe tu sector<input id="other-sector" type="text" maxlength="80" autocomplete="organization-title" placeholder="Por ejemplo, montaje de aire acondicionado"></label>
-            <p class="sector-note" id="sector-note">Usaremos el sector solo para orientar la consulta. No implica que exista un producto específico.</p>
+            <p class="sector-note" id="sector-note">El sector orienta estas ideas generales. No indica que exista un producto específico ni que todas apliquen a tu negocio.</p>
             <div class="sector-preview" id="sector-preview" aria-live="polite" aria-atomic="true">Elige tu sector para ver ejemplos de procesos que podríamos analizar.</div>
-            <button class="button button-dark sector-continue" id="sector-continue" type="button" disabled>Continuar <span aria-hidden="true">→</span></button>
+            <section class="sector-summary" id="sector-summary" aria-labelledby="sector-summary-title" aria-live="polite" hidden>
+              <p class="eyebrow">IDEAS PARA VALORAR</p>
+              <h4 id="sector-summary-title"></h4>
+              <p class="sector-summary-intro" id="sector-summary-intro"></p>
+              <div class="sector-summary-options" id="sector-summary-options"></div>
+              <p class="sector-summary-limit">Orientación general a partir del sector elegido; no es un diagnóstico ni afirma que exista un problema en tu negocio. Valida cada idea antes de aplicarla.</p>
+            </section>
+            <button class="button button-dark sector-continue" id="sector-continue" type="button" aria-controls="business-request-form" aria-expanded="false" disabled>Preparar una consulta opcional <span aria-hidden="true">→</span></button>
             <form class="business-request-form" id="business-request-form" hidden>
-              <div class="request-step-heading"><span>SIGUIENTE PASO</span><h4>Cuéntanos qué te gustaría mejorar</h4><p>Con una breve descripción basta. No incluyas datos de clientes ni información sensible.</p></div>
+              <div class="request-step-heading"><span>SI QUIERES, LO REVISAMOS CONTIGO</span><h4>Cuéntanos qué te gustaría mejorar</h4><p>La consulta es opcional. Con una breve descripción basta. No incluyas datos de clientes ni información sensible.</p></div>
               <label for="contact-email">Tu correo electrónico<input id="contact-email" name="email" type="email" autocomplete="email" placeholder="nombre@empresa.es" required></label>
               <label for="process-challenge">¿Qué proceso o dificultad quieres revisar?<textarea id="process-challenge" name="challenge" rows="3" maxlength="700" placeholder="Por ejemplo, coordinar avisos, visitas y presupuestos…" required></textarea></label>
               <button class="button button-dark" type="submit">Preparar mi consulta <span aria-hidden="true">↗</span></button>

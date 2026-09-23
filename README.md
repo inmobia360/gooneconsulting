@@ -31,8 +31,16 @@ Cada capacidad se define en `specs/` antes de escribirse; se implementa con crit
 - [Diagnóstico y equipo inicial de agentes](specs/004-diagnostico-equipo-agentes/spec.md)
 - [Plan para validar y desarrollar el diagnóstico](specs/004-diagnostico-equipo-agentes/plan.md)
 
+- [Technical Blueprint del resumen sectorial](docs/blueprints/resumen-sectorial-mvp-v0.1.md)
 ## Estado
 
 Fase actual: definición fundacional. No hay automatizaciones, cobros ni comunicaciones externas activas. Cualquier conector, uso de datos personales o acción comercial requiere una especificación aprobada y los permisos correspondientes.
 
 El modelo operativo de Diagnose estructura cinco roles lógicos secuenciales, sus contratos, límites y puertas humanas G0–G4. Todavía no ejecuta análisis con agentes sobre casos reales. La visualización local de prototypes/diagnostico/ es sintética, no persistente y sin conexión a modelos o backend. La arquitectura productiva, el vertical piloto, el precio y la oferta comercial siguen pendientes de validación/aprobación.
+
+La landing puede ofrecer una orientación inicial transversal: el visitante elige un sector y recibe un resumen general de procesos y soluciones posibles. No es diagnóstico individual ni presupone el sector inmobiliario. El equipo especializado está descrito en [agents/sector-summary](agents/sector-summary/README.md) y [specs/006-resumen-soluciones-por-sector](specs/006-resumen-soluciones-por-sector/spec.md), con configuraciones de subagentes Codex en `.codex/agents/`; su descubrimiento en el cliente local aún no está validado y no existe un runtime de agentes conectado a la web.
+
+La sección local del selector muestra orientaciones fijas para los ocho sectores del catálogo y un estado sin cobertura para otros sectores. No está conectada todavía al runtime ni a fuentes del equipo de agentes.
+
+
+Los perfiles de resumen sectorial también incluyen configuraciones de subagentes Codex en `.codex/agents/`. Sirven para tareas dentro de Codex; no están conectadas al runtime público de la landing.

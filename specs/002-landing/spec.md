@@ -46,15 +46,15 @@ La página habla de resultados operativos comprensibles: menos tareas manuales, 
 4. Recorrido de trabajo: entender, priorizar, diseñar e implantar con revisión humana.
 5. Distinción entre Diagnose transversal y productos Go Once Business por vertical.
 6. Salvaguardas: evidencias y supuestos separados, datos tratados con alcance claro, aprobación humana para decisiones sensibles.
-7. Selector de sector y consulta breve; el formulario prepara un borrador de correo que la persona revisa y envía manualmente.
+7. Selector de sector que muestra ideas generales de posibles soluciones sin pedir contacto; después, formulario opcional que prepara un borrador de correo para que la persona lo revise y envíe manualmente.
 
 ## Requisitos funcionales (EARS)
 
 - RF-001: Cuando una persona visite la página, deberá entender en pocos segundos a quién ayuda Go Once y qué resultado ofrece.
 - RF-002: Cuando una persona explore la oferta, deberá distinguir Diagnose (transversal) de Go Once Business (soluciones verticales).
 - RF-003: Cuando la página mencione ejemplos sectoriales, deberá etiquetarlos como líneas o ejemplos y no sugerir disponibilidad si no está confirmada.
-- RF-004: Cuando una persona active la CTA principal, deberá llegar al flujo de consulta para elegir sector y describir su necesidad.
-- RF-005: Cuando la persona complete la consulta, la página deberá preparar un borrador de correo dirigido a `contact@goonceconsulting.com`; nunca afirmará que el correo se envió.
+- RF-004: Cuando una persona active la CTA principal, deberá llegar al flujo sectorial, elegir un sector y ver ideas iniciales de soluciones posibles sin facilitar su correo.
+- RF-005: Cuando la persona elija iniciar una consulta de contacto y complete sus campos, la página deberá preparar un borrador de correo a contact@goonceconsulting.com; nunca afirmará que el correo se envió.
 - RF-006: La página deberá adaptarse a móvil, permitir navegación por teclado, respetar `prefers-reduced-motion` y mantener contraste legible.
 - RF-007: La página no deberá afirmar cifras, clientes, testimonios, certificaciones, integraciones ni resultados sin evidencia aprobada.
 - RF-008: Mientras no haya backend, el formulario podrá preparar el borrador local en el navegador, pero no deberá guardar ni remitir los campos a un servidor.
@@ -63,7 +63,7 @@ La página habla de resultados operativos comprensibles: menos tareas manuales, 
 - RF-011: La página deberá explicar qué recibe el cliente y cómo se acuerdan tiempo, precio y alcance antes de iniciar.
 - RF-012: La página pública no deberá incluir referencias a demo, prueba local o previsualización.
 - RF-013: La tipografía será sans serif en todos los niveles; textos funcionales y auxiliares cumplirán tamaños legibles definidos en el sistema visual.
-- RF-014: El formulario de consulta requerirá un correo de contacto y una descripción breve del proceso; abrirá el borrador editable en el cliente de correo para revisión y envío manual.
+- RF-014: El formulario opcional de consulta requerirá un correo de contacto y una descripción breve del proceso; abrirá el borrador editable en el cliente de correo para revisión y envío manual. Ver ideas sectoriales no requerirá rellenarlo.
 
 ## Fuera de alcance
 
@@ -85,6 +85,6 @@ La página habla de resultados operativos comprensibles: menos tareas manuales, 
 - Se identifica con claridad Go Once Consulting, Go Once Diagnose y Go Once Business.
 - La página expresa dolores concretos y una solución entendible para más de un sector.
 - Una persona no confunde las verticales de ejemplo con funcionalidades disponibles.
-- La CTA conduce al correo de contacto y no afirma que el mensaje se haya enviado.
+- La selección del sector muestra ideas iniciales sin pedir correo; el formulario de contacto opcional abre un borrador editable y no afirma que el mensaje se haya enviado.
 - Diseño usable en móvil, foco visible, semántica accesible y movimiento reducido respetado.
 - No aparecen métricas o pruebas sociales inventadas.

@@ -1,0 +1,661 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://goonce.example/schemas/agent-handoff.v0.1.schema.json",
+  "title": "Sector summary agent handoff",
+  "description": "Structured inter-agent envelope derived from the GO ONCE AI OS Master Prompt. Design contract, not an active API.",
+  "type": "object",
+  "oneOf": [
+    {
+      "allOf": [
+        {
+          "$ref": "#/$defs/envelope"
+        },
+        {
+          "properties": {
+            "stage": {
+              "const": "research"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "findings"
+              ],
+              "properties": {
+                "findings": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/finding"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "allOf": [
+        {
+          "$ref": "#/$defs/envelope"
+        },
+        {
+          "properties": {
+            "stage": {
+              "const": "model_process"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "processAreas"
+              ],
+              "properties": {
+                "processAreas": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/processArea"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "allOf": [
+        {
+          "$ref": "#/$defs/envelope"
+        },
+        {
+          "properties": {
+            "stage": {
+              "const": "frictions"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "frictions"
+              ],
+              "properties": {
+                "frictions": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/friction"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "allOf": [
+        {
+          "$ref": "#/$defs/envelope"
+        },
+        {
+          "properties": {
+            "stage": {
+              "const": "opportunities"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "opportunities"
+              ],
+              "properties": {
+                "opportunities": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/opportunity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "allOf": [
+        {
+          "$ref": "#/$defs/envelope"
+        },
+        {
+          "properties": {
+            "stage": {
+              "const": "quality_review"
+            },
+            "payload": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "verdict",
+                "findings"
+              ],
+              "properties": {
+                "verdict": {
+                  "enum": [
+                    "PASS",
+                    "REVISE",
+                    "BLOCK"
+                  ]
+                },
+                "findings": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/reviewFinding"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "$defs": {
+    "envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocolVersion",
+        "runId",
+        "stage",
+        "status",
+        "sector",
+        "sources",
+        "payload",
+        "blockers",
+        "unknowns",
+        "handoffTo",
+        "usage"
+      ],
+      "properties": {
+        "protocolVersion": {
+          "const": "0.1"
+        },
+        "runId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "stage": {
+          "enum": [
+            "research",
+            "model_process",
+            "frictions",
+            "opportunities",
+            "quality_review"
+          ]
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "limited",
+            "blocked"
+          ]
+        },
+        "sector": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        },
+        "payload": {
+          "type": "object"
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "handoffTo": {
+          "enum": [
+            "director",
+            "research",
+            "model_process",
+            "frictions",
+            "opportunities",
+            "quality_review"
+          ]
+        },
+        "usage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "inputTokens",
+            "outputTokens",
+            "estimatedCostUsd",
+            "durationMs"
+          ],
+          "properties": {
+            "inputTokens": { "type": ["integer", "null"], "minimum": 0 },
+            "outputTokens": { "type": ["integer", "null"], "minimum": 0 },
+            "estimatedCostUsd": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "durationMs": { "type": ["integer", "null"], "minimum": 0 }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "blocked"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "blockers": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "limited"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "unknowns": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "url",
+        "publisher",
+        "accessedAt",
+        "supports"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publishedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "accessedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "supports": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "findingType",
+        "finding",
+        "evidenceRefs",
+        "confidence",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "findingType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "finding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "status": {
+          "enum": [
+            "KNOWN",
+            "INFERRED",
+            "ASSUMED",
+            "UNKNOWN"
+          ]
+        },
+        "reasoning": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "KNOWN"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "evidenceRefs": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "INFERRED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reasoning"
+            ],
+            "properties": {
+              "evidenceRefs": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "ASSUMED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reasoning"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "UNKNOWN"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "reasoning"
+            ]
+          }
+        }
+      ]
+    },
+    "processArea": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "description",
+        "findingRefs",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "findingRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "friction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "processRef",
+        "description",
+        "evidenceRefs",
+        "confidence",
+        "status",
+        "reasoning"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "processRef": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "status": {
+          "enum": [
+            "KNOWN",
+            "INFERRED",
+            "ASSUMED",
+            "UNKNOWN"
+          ]
+        },
+        "reasoning": {
+          "type": "string"
+        }
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "frictionRefs",
+        "title",
+        "description",
+        "solutionType",
+        "aiRequired",
+        "priority",
+        "complexity",
+        "confidence",
+        "evidenceRefs",
+        "alternativeWithoutAI",
+        "risks",
+        "dependencies",
+        "validation"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "frictionRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "solutionType": {
+          "enum": [
+            "process",
+            "rules-automation",
+            "ai",
+            "human-review"
+          ]
+        },
+        "aiRequired": {
+          "type": "boolean"
+        },
+        "priority": {
+          "enum": [
+            "QUICK_WIN",
+            "MEDIUM",
+            "TRANSFORMATION"
+          ]
+        },
+        "complexity": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "UNKNOWN"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "evidenceRefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "alternativeWithoutAI": {
+          "type": "string"
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validation": {
+          "type": "string"
+        }
+      }
+    },
+    "reviewFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "severity",
+        "itemRef",
+        "detail",
+        "requiredChange"
+      ],
+      "properties": {
+        "severity": {
+          "enum": [
+            "critical",
+            "major",
+            "minor"
+          ]
+        },
+        "itemRef": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "requiredChange": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
