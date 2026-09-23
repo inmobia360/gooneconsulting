@@ -18,4 +18,4 @@ Entrega solo fricciones con vínculo trazable a un proceso y evidencia o razonam
 ## Contrato de handoff
 Consume model_process y emite stage frictions con payload.frictions. Cada fricción referencia processRef, evidencia, confidence y epistemic status; las INFERRED requieren reasoning. No afirma prevalencia sectorial sin evidencia.
 
-Cada payload.frictions incluye objetos id, processRef, description, evidenceRefs, confidence, status y reasoning. Envelope incluye usage agregado y el mismo runId.
+Cada payload.frictions incluye objetos id, processRef, description, evidenceRefs, confidence, status y reasoning. Envelope incluye usage agregado y el mismo runId; usa null en métricas que el runtime no exponga.

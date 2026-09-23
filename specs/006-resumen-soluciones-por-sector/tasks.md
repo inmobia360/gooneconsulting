@@ -23,4 +23,4 @@
 - [x] T10. Definir contratos estructurados de handoff entre las etapas del equipo.
   - Hecho cuando: cada fase dispone de payload discriminado, referencias a evidencia, estado, confianza y handoff siguiente en JSON Schema.
 - [ ] T11. Empaquetar los seis roles como agentes de proyecto Codex.
-  - Hecho cuando: existen seis definiciones TOML reconocibles bajo `.codex/agents/`, cada una enlaza un perfil portable, define una misión estrecha y limita herramientas por defecto a lectura; una sesión nueva de Codex los descubre y el revisor puede devolver PASS/REVISE/BLOCK.
+  - Hecho cuando: existen seis definiciones TOML reconocibles bajo `.codex/agents/`, cada una enlaza un perfil portable, define una misión estrecha, declara sandbox read-only y desactiva web_search; una sesión nueva de Codex los descubre y el revisor puede devolver PASS/REVISE/BLOCK.

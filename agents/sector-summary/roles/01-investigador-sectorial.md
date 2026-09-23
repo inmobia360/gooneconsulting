@@ -18,4 +18,4 @@ Entrega trazabilidad y vacíos al Analista. Si no hay fuente aprobada o cobertur
 ## Contrato de handoff
 Emite stage research con payload.findings, envelope status y handoffTo model_process. Usa KNOWN, INFERRED, ASSUMED o UNKNOWN, confianza numérica 0–1 y referencias que resuelvan contra sources. No incluye texto no respaldado como KNOWN.
 
-Campos obligatorios de payload.findings: id, findingType, finding, evidenceRefs, confidence, status; añade reasoning para INFERRED, ASSUMED y UNKNOWN. Envelope incluye sources y usage agregado de tokens/coste/duración.
+Campos obligatorios de payload.findings: id, findingType, finding, evidenceRefs, confidence, status; añade reasoning para INFERRED, ASSUMED y UNKNOWN. Envelope incluye sources y usage; usa null para métricas de tokens/duración que el runtime no proporcione, sin estimarlas.

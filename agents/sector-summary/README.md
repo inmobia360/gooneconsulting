@@ -38,11 +38,11 @@ El directorio `.codex/agents/` contiene seis definiciones de subagentes personal
 - `sector_summary_director` — `.codex/agents/director-resumen-sectorial.toml`
 - `sector_researcher` — `.codex/agents/sector-researcher.toml`
 - `sector_process_analyst` — `.codex/agents/process-analyst.toml`
-- `sector_friction_analyst` — `friction-analyst.toml`
+- `sector_friction_analyst` — `.codex/agents/friction-analyst.toml`
 - `sector_opportunity_designer` — `.codex/agents/opportunity-designer.toml`
-- `sector_evidence_reviewer` — `evidence-reviewer.toml`
+- `sector_evidence_reviewer` — `.codex/agents/evidence-reviewer.toml`
 
-Son subagentes para el entorno de desarrollo Codex, no agentes productivos de la web. No fijan modelo, proveedor, MCP ni acceso de búsqueda; heredan las herramientas de la sesión, pero sus instrucciones y sandbox limitan el trabajo a lectura y fuentes aprobadas entregadas explícitamente. Consulta la [documentación oficial de subagentes Codex](https://learn.chatgpt.com/docs/agent-configuration/subagents).
+Son subagentes para el entorno de desarrollo Codex, no agentes productivos de la web. No fijan modelo ni proveedor. Los seis perfiles desactivan el `web_search` nativo y declaran `sandbox_mode = "read-only"` por defecto; los overrides de permisos/sandbox de la sesión principal pueden prevalecer, y otras herramientas heredadas requieren respetar el límite de usar solo fuentes aprobadas entregadas explícitamente. Consulta la [documentación oficial de subagentes Codex](https://learn.chatgpt.com/docs/agent-configuration/subagents).
 
 
-Para comprobarlos, abre una sesión nueva de Codex en este repositorio confiable y solicita explícitamente el rol por nombre. La prueba con el CLI local no pudo leer `.codex/config.toml` por un bloqueo del helper de PowerShell, por lo que queda pendiente confirmar la carga en el cliente de escritorio. El registro TOML y las instrucciones están versionados, pero esto aún no valida el comportamiento real de los seis roles.
+Para comprobarlos, abre una sesión nueva de Codex en este repositorio confiable y solicita explícitamente el rol por nombre. El CLI disponible no tiene una opción de invocación de perfiles por nombre; el intento genérico con `codex exec` fue bloqueado al leer el repo por el helper de PowerShell, y su respuesta no cumplió el contrato. No cuenta como prueba del perfil. Queda pendiente confirmar la carga y el comportamiento en el cliente de escritorio.

@@ -18,4 +18,4 @@ Entrega cada área de proceso con evidencias, inferencias y variaciones al Detec
 ## Contrato de handoff
 Consume la salida research y emite stage model_process con payload.processAreas; cada proceso lleva findingRefs y confidence entre 0 y 1. Si no hay evidencia suficiente, devuelve limited con unknowns o blocked con blockers.
 
-Cada payload.processAreas incluye objetos con id, name, description, findingRefs y confidence. Envelope incluye el usage del paso y conserva el runId recibido.
+Cada payload.processAreas incluye objetos con id, name, description, findingRefs y confidence. Envelope incluye el usage del paso y conserva el runId recibido; usa null en métricas que el runtime no exponga.

@@ -246,14 +246,8 @@
             "durationMs"
           ],
           "properties": {
-            "inputTokens": {
-              "type": "integer",
-              "minimum": 0
-            },
-            "outputTokens": {
-              "type": "integer",
-              "minimum": 0
-            },
+            "inputTokens": { "type": ["integer", "null"], "minimum": 0 },
+            "outputTokens": { "type": ["integer", "null"], "minimum": 0 },
             "estimatedCostUsd": {
               "type": [
                 "number",
@@ -261,10 +255,7 @@
               ],
               "minimum": 0
             },
-            "durationMs": {
-              "type": "integer",
-              "minimum": 0
-            }
+            "durationMs": { "type": ["integer", "null"], "minimum": 0 }
           }
         }
       },
