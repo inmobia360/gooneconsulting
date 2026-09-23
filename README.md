@@ -32,15 +32,18 @@ Cada capacidad se define en `specs/` antes de escribirse; se implementa con crit
 - [Plan para validar y desarrollar el diagnóstico](specs/004-diagnostico-equipo-agentes/plan.md)
 
 - [Technical Blueprint del resumen sectorial](docs/blueprints/resumen-sectorial-mvp-v0.1.md)
+- [Landing institucional estática](prototypes/landing-institucional/index.html)
+- [Kit compartido de marca](packages/go-once-brand/README.md)
+- [Implementación digital de marca](docs/brand/implementacion-digital.md)
+- [Especificación del prototipo institucional y kit de marca](specs/007-landing-institucional-kit-marca/spec.md)
 ## Estado
 
 Fase actual: definición fundacional. No hay automatizaciones, cobros ni comunicaciones externas activas. Cualquier conector, uso de datos personales o acción comercial requiere una especificación aprobada y los permisos correspondientes.
 
 El modelo operativo de Diagnose estructura cinco roles lógicos secuenciales, sus contratos, límites y puertas humanas G0–G4. Todavía no ejecuta análisis con agentes sobre casos reales. La visualización local de prototypes/diagnostico/ es sintética, no persistente y sin conexión a modelos o backend. La arquitectura productiva, el vertical piloto, el precio y la oferta comercial siguen pendientes de validación/aprobación.
 
-La landing puede ofrecer una orientación inicial transversal: el visitante elige un sector y recibe un resumen general de procesos y soluciones posibles. No es diagnóstico individual ni presupone el sector inmobiliario. El equipo especializado está descrito en [agents/sector-summary](agents/sector-summary/README.md) y [specs/006-resumen-soluciones-por-sector](specs/006-resumen-soluciones-por-sector/spec.md), con configuraciones de subagentes Codex en `.codex/agents/`; su descubrimiento en el cliente local aún no está validado y no existe un runtime de agentes conectado a la web.
+La landing sectorial ofrece una orientación inicial transversal: el visitante elige un sector y recibe ejemplos generales de procesos y soluciones posibles. No es diagnóstico individual ni presupone el sector inmobiliario. El equipo especializado está descrito en [agents/sector-summary](agents/sector-summary/README.md) y [specs/006-resumen-soluciones-por-sector](specs/006-resumen-soluciones-por-sector/spec.md). Los seis perfiles de Codex se descubrieron en una sesión local nueva y sus resultados de límite se revisaron; siguen separados del runtime web.
 
-La sección local del selector muestra orientaciones fijas para los ocho sectores del catálogo y un estado sin cobertura para otros sectores. No está conectada todavía al runtime ni a fuentes del equipo de agentes.
+La sección local del selector muestra orientaciones fijas para los ocho sectores del catálogo y un estado sin cobertura para otros sectores. No está conectada a los agentes ni a fuentes aprobadas. La [landing institucional](prototypes/landing-institucional/index.html) es otro prototipo estático, independiente y sin formularios.
 
-
-Los perfiles de resumen sectorial también incluyen configuraciones de subagentes Codex en `.codex/agents/`. Sirven para tareas dentro de Codex; no están conectadas al runtime público de la landing.
+El kit de marca compartido vive en `assets/brand/`, `packages/go-once-brand/` y `docs/brand/`. La ficha de [especificación 007](specs/007-landing-institucional-kit-marca/spec.md) describe su alcance; el sitio no está desplegado.

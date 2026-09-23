@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
+
+:root {
+  --go-indigo: #17163B;
+  --go-violet: #6C4CF1;
+  --go-lime: #C8F04A;
+  --go-cream: #F5F1E8;
+  --go-lavender: #D9D4FF;
+  --go-danger: #B42318;
+
+  --go-font-display: "Space Grotesk", system-ui, sans-serif;
+  --go-font-body: "Inter", system-ui, sans-serif;
+  --go-radius-sm: 8px;
+  --go-radius-md: 14px;
+  --go-radius-lg: 24px;
+  --go-shadow-soft: 0 10px 30px rgb(23 22 59 / 10%);
+  --go-transition: 180ms ease;
+}
+
+.go-surface-dark {
+  background: var(--go-indigo);
+  color: var(--go-cream);
+}
+
+.go-surface-light {
+  background: var(--go-cream);
+  color: var(--go-indigo);
+}
+
+.go-display {
+  font-family: var(--go-font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.go-body {
+  font-family: var(--go-font-body);
+}
+
+.go-button-primary {
+  align-items: center;
+  background: var(--go-lime);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--go-indigo);
+  display: inline-flex;
+  font-family: var(--go-font-display);
+  font-weight: 600;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1.1rem;
+  text-decoration: none;
+  transition: background-color var(--go-transition), color var(--go-transition), transform var(--go-transition);
+}
+
+.go-button-primary:hover {
+  background: var(--go-violet);
+  color: white;
+}
+
+.go-button-primary:focus-visible,
+.go-button-secondary:focus-visible {
+  outline: 3px solid var(--go-lime);
+  outline-offset: 3px;
+}
+
+.go-button-secondary {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--go-violet);
+  border-radius: 999px;
+  color: var(--go-violet);
+  display: inline-flex;
+  font-family: var(--go-font-display);
+  font-weight: 600;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1.1rem;
+  text-decoration: none;
+  transition: background-color var(--go-transition), color var(--go-transition);
+}
+
+.go-button-secondary:hover { background: var(--go-lavender); color: var(--go-indigo); }
+.go-status-active { color: var(--go-indigo); background: var(--go-lime); }
+.go-status-progress { color: white; background: var(--go-violet); }
+.go-status-pending { color: var(--go-indigo); background: var(--go-lavender); }
+.go-status-blocked { color: var(--go-cream); background: var(--go-indigo); }
+.go-status-error { color: white; background: var(--go-danger); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
