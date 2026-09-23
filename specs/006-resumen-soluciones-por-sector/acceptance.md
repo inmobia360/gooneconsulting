@@ -14,7 +14,7 @@
 | RF-010 | Reconocer cobertura insuficiente y abstenerse | Perfil 05 y ejemplo límite | Aceptado documentalmente |
 | RF-011 | Mostrar soluciones posibles con alternativa sin IA y límites claros | Perfiles 04–05 y vista de landing | UI local muestra opciones orientativas; revisión y generación por agentes pendiente |
 
-La aceptación anterior verifica estructura documental. No prueba comportamiento, cumplimiento legal, calidad de proveedor ni compatibilidad de runtime. T6, T7 y T8 siguen pendientes.
+La aceptación anterior verifica estructura documental. No prueba comportamiento, cumplimiento legal, calidad de proveedor ni compatibilidad de runtime. Por decisión del propietario del 2026-09-23, el equipo permanece documental y no se activa proveedor ni generación web. T6, T7 y T8 siguen pendientes.
 
 ## Paquete local de subagentes Codex
 

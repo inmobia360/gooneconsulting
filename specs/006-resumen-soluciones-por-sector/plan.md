@@ -34,7 +34,9 @@ La página debe presentar el resumen sin solicitar correo. Si el equipo bloquea 
 
 ## Decisiones pendientes
 
-Aprobación del catálogo y fuentes, proveedor/runtime, política de retención y modo de publicación.
+**Decisión del propietario (2026-09-23): mantener por ahora el equipo en modo documental.** No se activa proveedor/modelo ni generación web.
+
+Siguen pendientes para una futura activación: aprobación del catálogo y fuentes, proveedor/runtime, política de retención y modo de publicación.
 
 Contratos versionados: salida pública agents/sector-summary/contracts/sector-summary.v0.1.schema.json; handoff entre agentes agents/sector-summary/contracts/agent-handoff.v0.1.schema.json.
 

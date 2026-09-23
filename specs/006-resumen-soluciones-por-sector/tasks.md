@@ -10,8 +10,8 @@
   - Hecho cuando: README y perfiles impiden continuar sin evidencia o aprobación requerida.
 - [x] T5. Revisar estáticamente perfiles y casos nominal/límite.
   - Hecho cuando: queda evidencia de revisión documental y se declara expresamente que no hubo ejecución con runtime.
-- [ ] T6. Aprobar runtime/modelo, paquete de fuentes, privacidad/retención, host y límites de coste.
-  - Hecho cuando: proveedor/modelo, fuentes por sector, manejo de PII, retención, rate limit, host y coste máximo tienen una decisión aprobada.
+- [ ] T6. Aprobar runtime/modelo, paquete de fuentes, privacidad/retención, host y límites de coste. **Diferido por decisión del propietario (2026-09-23): mantener el equipo documental.**
+  - Hecho cuando: para una futura activación, proveedor/modelo, fuentes por sector, manejo de PII, retención, rate limit, host y coste máximo tienen una decisión aprobada.
 
 - [ ] T7. Conectar la salida revisada del equipo a la landing.
   - Hecho cuando: la página recibe una salida conforme al contrato tras una revisión aprobada; no depende del catálogo fijo del prototipo, no exige correo y comunica con claridad estados limitado/bloqueado.
