@@ -31,6 +31,7 @@ Cada capacidad se define en `specs/` antes de escribirse; se implementa con crit
 - [Diagnóstico y equipo inicial de agentes](specs/004-diagnostico-equipo-agentes/spec.md)
 - [Plan para validar y desarrollar el diagnóstico](specs/004-diagnostico-equipo-agentes/plan.md)
 
+- [Technical Blueprint del resumen sectorial](docs/blueprints/resumen-sectorial-mvp-v0.1.md)
 ## Estado
 
 Fase actual: definición fundacional. No hay automatizaciones, cobros ni comunicaciones externas activas. Cualquier conector, uso de datos personales o acción comercial requiere una especificación aprobada y los permisos correspondientes.

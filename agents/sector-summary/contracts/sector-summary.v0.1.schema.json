@@ -1,67 +1,20 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://goonce.example/schemas/sector-summary.v0.1.schema.json",
-  "title": "Orientación de soluciones por sector",
-  "description": "Contrato documental; no es un endpoint ni supone que exista un runtime.",
+  "title": "GO ONCE Public Sector Summary",
+  "description": "Public scanner output contract, aligned to KNOWN/INFERRED/ASSUMED/UNKNOWN. Design artifact, not an active API.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "status", "sector", "claims", "processAreas", "frictions", "opportunities", "qualityReview", "summary", "limitations", "evidence"],
+  "required": ["version", "status", "sector", "claims", "evidence", "processAreas", "frictions", "opportunities", "qualityReview", "summary", "limitations", "blockers"],
   "properties": {
     "version": { "const": "0.1" },
     "status": { "enum": ["completed", "limited", "blocked"] },
     "sector": { "type": "string", "minLength": 1, "maxLength": 80 },
-    "claims": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["id", "type", "text", "confidence", "evidenceRefs"],
-        "properties": {
-          "id": { "type": "string" },
-          "type": { "enum": ["fact", "inference", "recommendation"] },
-          "text": { "type": "string" },
-          "confidence": { "enum": ["high", "medium", "low"] },
-          "reasoning": { "type": "string" },
-          "evidenceRefs": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
-        }
-      }
-    },
-    "evidence": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["id", "title", "url", "publisher", "accessedAt", "supports"],
-        "properties": {
-          "id": { "type": "string" },
-          "title": { "type": "string" },
-          "url": { "type": "string", "format": "uri" },
-          "publisher": { "type": "string" },
-          "publishedAt": { "type": ["string", "null"], "format": "date" },
-          "accessedAt": { "type": "string", "format": "date" },
-          "supports": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
-        }
-      }
-    },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
     "processAreas": { "type": "array", "items": { "type": "string" } },
     "frictions": { "type": "array", "items": { "type": "string" } },
-    "opportunities": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": ["friction", "optionType", "description", "effort", "risks", "dependencies", "validation"],
-        "properties": {
-          "friction": { "type": "string" },
-          "optionType": { "enum": ["process", "rules-automation", "ai", "human-review"] },
-          "description": { "type": "string" },
-          "effort": { "enum": ["low", "medium", "high", "unknown"] },
-          "risks": { "type": "array", "items": { "type": "string" } },
-          "dependencies": { "type": "array", "items": { "type": "string" } },
-          "validation": { "type": "string" }
-        }
-      }
-    },
+    "opportunities": { "type": "array", "items": { "$ref": "#/$defs/opportunity" } },
     "qualityReview": {
       "type": "object",
       "additionalProperties": false,
@@ -72,16 +25,89 @@
       }
     },
     "summary": { "type": "string" },
-    "limitations": { "type": "array", "items": { "type": "string" } }
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "blockers": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "text", "status", "confidence", "evidenceRefs"],
+      "properties": {
+        "id": { "type": "string" },
+        "category": { "enum": ["process", "friction", "opportunity", "recommendation"] },
+        "text": { "type": "string" },
+        "status": { "enum": ["KNOWN", "INFERRED", "ASSUMED", "UNKNOWN"] },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "reasoning": { "type": "string" },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" } }
+      },
+      "allOf": [
+        { "if": { "properties": { "status": { "const": "KNOWN" } } }, "then": { "properties": { "evidenceRefs": { "minItems": 1 } } } },
+        { "if": { "properties": { "status": { "const": "INFERRED" } } }, "then": { "required": ["reasoning"], "properties": { "evidenceRefs": { "minItems": 1 } } } },
+        { "if": { "properties": { "status": { "const": "ASSUMED" } } }, "then": { "required": ["reasoning"] } },
+        { "if": { "properties": { "status": { "const": "UNKNOWN" } } }, "then": { "required": ["reasoning"] } }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "url", "publisher", "accessedAt", "supports"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "publisher": { "type": "string" },
+        "publishedAt": { "type": ["string", "null"], "format": "date" },
+        "accessedAt": { "type": "string", "format": "date" },
+        "supports": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      }
+    },
+    "opportunity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "problemRefs", "title", "description", "solutionType", "aiRequired", "priority", "complexity", "confidence", "evidenceRefs", "alternativeWithoutAI", "risks", "dependencies", "validation"],
+      "properties": {
+        "id": { "type": "string" },
+        "problemRefs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "solutionType": { "enum": ["process", "rules-automation", "ai", "human-review"] },
+        "aiRequired": { "type": "boolean" },
+        "priority": { "enum": ["QUICK_WIN", "MEDIUM", "TRANSFORMATION"] },
+        "complexity": { "enum": ["LOW", "MEDIUM", "HIGH", "UNKNOWN"] },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "alternativeWithoutAI": { "type": "string" },
+        "risks": { "type": "array", "items": { "type": "string" } },
+        "dependencies": { "type": "array", "items": { "type": "string" } },
+        "validation": { "type": "string" }
+      }
+    }
   },
   "allOf": [
     {
       "if": { "properties": { "status": { "const": "completed" } } },
-      "then": { "properties": { "qualityReview": { "properties": { "verdict": { "const": "PASS" } } }, "evidence": { "minItems": 1 }, "claims": { "minItems": 1 } } }
+      "then": {
+        "properties": {
+          "claims": { "minItems": 1, "items": { "not": { "properties": { "status": { "enum": ["ASSUMED", "UNKNOWN"] } } } } },
+          "evidence": { "minItems": 1 },
+          "qualityReview": { "properties": { "verdict": { "const": "PASS" } } }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "status": { "const": "limited" } } },
+      "then": { "properties": { "limitations": { "minItems": 1 } } }
     },
     {
       "if": { "properties": { "status": { "const": "blocked" } } },
-      "then": { "properties": { "qualityReview": { "properties": { "verdict": { "const": "BLOCK" } } } } }
+      "then": {
+        "properties": {
+          "blockers": { "minItems": 1 },
+          "qualityReview": { "properties": { "verdict": { "const": "BLOCK" } } }
+        }
+      }
     }
   ]
 }

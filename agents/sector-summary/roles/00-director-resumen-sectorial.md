@@ -19,3 +19,6 @@ Autonomía A0. Puede leer entradas de esta ejecución y referencias aprobadas. N
 
 ## Handoff y finalización
 Cada handoff contiene sector, objetivo, fuentes autorizadas, límites, artefactos previos y preguntas abiertas. Finaliza solo con revisión aprobada, límites comunicados y salida conforme al contrato. Si falla una etapa, registra el estado y motivo y permite reanudar sin ocultar el bloqueo.
+
+## Contrato de handoff
+Recibe y emite sobres conformes a agents/sector-summary/contracts/agent-handoff.v0.1.schema.json. Ejecuta research → model_process → frictions → opportunities → quality_review; cualquier envelope blocked vuelve al Director y detiene síntesis. Solo redacta la salida pública conforme a sector-summary.v0.1.schema.json tras verdict PASS.

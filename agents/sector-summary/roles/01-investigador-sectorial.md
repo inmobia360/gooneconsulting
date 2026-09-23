@@ -14,3 +14,8 @@ Solo lectura de fuentes expresamente habilitadas por el runtime. El perfil por s
 
 ## Handoff
 Entrega trazabilidad y vacíos al Analista. Si no hay fuente aprobada o cobertura fiable, detén la etapa y pide decisión; nunca rellena huecos con conocimiento no atribuido.
+
+## Contrato de handoff
+Emite stage research con payload.findings, envelope status y handoffTo model_process. Usa KNOWN, INFERRED, ASSUMED o UNKNOWN, confianza numérica 0–1 y referencias que resuelvan contra sources. No incluye texto no respaldado como KNOWN.
+
+Campos obligatorios de payload.findings: id, findingType, finding, evidenceRefs, confidence, status; añade reasoning para INFERRED, ASSUMED y UNKNOWN. Envelope incluye sources y usage agregado de tokens/coste/duración.

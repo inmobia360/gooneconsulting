@@ -14,3 +14,8 @@ No diagnostica al visitante, no infiere que su empresa use o carezca de un proce
 
 ## Handoff
 Entrega cada área de proceso con evidencias, inferencias y variaciones al Detector de Fricciones. Señala procesos sin base suficiente en lugar de completarlos por intuición.
+
+## Contrato de handoff
+Consume la salida research y emite stage model_process con payload.processAreas; cada proceso lleva findingRefs y confidence entre 0 y 1. Si no hay evidencia suficiente, devuelve limited con unknowns o blocked con blockers.
+
+Cada payload.processAreas incluye objetos con id, name, description, findingRefs y confidence. Envelope incluye el usage del paso y conserva el runId recibido.

@@ -30,6 +30,14 @@ Fuera de alcance: rastreo web autónomo, conectores, almacenamiento de leads, in
 - RF-010: Cuando se solicite un sector poco documentado, el equipo deberá informar el límite de evidencia y abstenerse de inventar patrones.
 - RF-011: Cuando se muestre el resumen sectorial, deberá ofrecer una alternativa sin IA cuando sea razonable, explicar límites y diferenciar hechos, hipótesis e ideas posibles en lenguaje claro.
 
+## Trazabilidad con el Prompt Maestro
+
+- Secciones 62–63: se toma el núcleo reducido de GO Director, research, modelo/procesos, fricciones y oportunidades; solo el nivel público del Scanner.
+- Sección 67: GO Director planifica, ejecuta etapas ordenadas, controla fallos, solicita revisión y sintetiza.
+- Sección 68: cada etapa intercambia JSON versionado con evidencia, confidence numérica y estado KNOWN/INFERRED/ASSUMED/UNKNOWN.
+- Secciones 66 y 78: se exige trazabilidad y revisión proporcionada al riesgo. Una consulta pública por sector no habilita acciones externas.
+- Se excluyen URL de empresa, datos de empleados, herramientas internas, problemas de empresa, facturación, ROI, prospección, vertical inmobiliario predeterminado, propuestas e implementación porque el alcance confirmado solo pide sector y opciones posibles.
+
 ## Secuencia y equipo
 
 1. **Director de Resumen Sectorial**: controla alcance, orden, entradas, bloqueos y salida final.

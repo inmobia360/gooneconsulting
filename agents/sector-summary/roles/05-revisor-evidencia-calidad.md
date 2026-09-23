@@ -20,3 +20,8 @@ Puede bloquear publicación y pedir nueva evidencia. No puede modificar fuentes,
 
 ## Handoff
 PASS vuelve al Director con hallazgos y referencias. REVISE vuelve al rol responsable con cambios concretos. BLOCK detiene el flujo con motivo legible y decisión necesaria; el Director no puede anularlo sin nueva evidencia y revisión.
+
+## Contrato de handoff
+Emite stage quality_review con payload.verdict y findings estructurados. PASS permite síntesis del Director; REVISE vuelve al responsable; BLOCK detiene el run y exige blockers. Comprueba el JSON Schema de handoffs y del resultado público antes de aprobar.
+
+Cada hallazgo de revisión contiene severity, itemRef, detail y requiredChange. Envelope de salida incluye usage, sources usados para revisar y el mismo runId.

@@ -16,7 +16,9 @@ La revisión puede devolver cambios o bloquear. Sin fuentes aprobadas, no se hac
 - [03 Detector de Fricciones](roles/03-detector-fricciones.md)
 - [04 Diseñador de Oportunidades](roles/04-disenador-oportunidades.md)
 - [05 Revisor de Evidencia y Calidad](roles/05-revisor-evidencia-calidad.md)
-- [Contrato de salida v0.1](contracts/sector-summary.v0.1.schema.json)
+- [Contrato de salida pública v0.1](contracts/sector-summary.v0.1.schema.json)
+- [Contrato de handoff entre agentes v0.1](contracts/agent-handoff.v0.1.schema.json)
+- [Technical Blueprint MVP 0.1](../../docs/blueprints/resumen-sectorial-mvp-v0.1.md)
 
 ## Límites compartidos
 

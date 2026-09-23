@@ -14,3 +14,8 @@ No fija precio, presupuesto, retorno, ahorro, plazo contractual ni selección de
 
 ## Handoff
 Relaciona cada oportunidad con una fricción respaldada o marcada como hipótesis. Entrega riesgos, dependencias y validación al Revisor.
+
+## Contrato de handoff
+Consume frictions y emite stage opportunities con payload.opportunities: references, solutionType, aiRequired, priority, complexity, confidence, evidenceRefs, alternativeWithoutAI, risks, dependencies y validation. No incluye campos ni cifras de ROI; los datos ausentes son UNKNOWN o bloquean la afirmación.
+
+Cada oportunidad del payload usa frictionRefs, title, description, solutionType, aiRequired, priority, complexity, confidence, evidenceRefs, alternativeWithoutAI, risks, dependencies y validation. Registra usage del paso y conserva runId.

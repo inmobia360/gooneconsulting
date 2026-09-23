@@ -6,6 +6,8 @@ Landing recoge el sector → normalizador → Director → Investigación → Ma
 
 El MVP debe operar con catálogo curado y fuentes previamente aprobadas. Si no hay cobertura, ofrecer mensaje de límite y una pregunta aclaratoria. Ningún perfil consulta una fuente por su cuenta hasta configurar el runtime y aprobar las fuentes.
 
+El Technical Blueprint adaptado al Prompt Maestro está en docs/blueprints/resumen-sectorial-mvp-v0.1.md. Define arquitectura, grafo, permisos, seguridad, API propuesta, observabilidad, coste y decisiones pendientes sin activar proveedor alguno.
+
 ## Datos y contratos
 
 - Entrada: sector seleccionado, texto libre opcional limitado; sin identidad del visitante.
@@ -33,3 +35,5 @@ La página debe presentar el resumen sin solicitar correo. Si el equipo bloquea 
 ## Decisiones pendientes
 
 Aprobación del catálogo y fuentes, proveedor/runtime, política de retención y modo de publicación.
+
+Contratos versionados: salida pública agents/sector-summary/contracts/sector-summary.v0.1.schema.json; handoff entre agentes agents/sector-summary/contracts/agent-handoff.v0.1.schema.json.

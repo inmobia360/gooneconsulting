@@ -14,3 +14,8 @@ No afirma conocer la operación del negocio del visitante. No estima pérdidas, 
 
 ## Handoff
 Entrega solo fricciones con vínculo trazable a un proceso y evidencia o razonamiento explícito. El Diseñador debe conservar la naturaleza hipotética.
+
+## Contrato de handoff
+Consume model_process y emite stage frictions con payload.frictions. Cada fricción referencia processRef, evidencia, confidence y epistemic status; las INFERRED requieren reasoning. No afirma prevalencia sectorial sin evidencia.
+
+Cada payload.frictions incluye objetos id, processRef, description, evidenceRefs, confidence, status y reasoning. Envelope incluye usage agregado y el mismo runId.

@@ -10,10 +10,15 @@
   - Hecho cuando: README y perfiles impiden continuar sin evidencia o aprobación requerida.
 - [x] T5. Revisar estáticamente perfiles y casos nominal/límite.
   - Hecho cuando: queda evidencia de revisión documental y se declara expresamente que no hubo ejecución con runtime.
-- [ ] T6. Configurar runtime, fuentes aprobadas y prueba conductual.
-  - Hecho cuando: proveedor y fuentes aprobados, prueba real reproducible y aceptación de cada RF enlazada.
+- [ ] T6. Aprobar runtime/modelo, paquete de fuentes, privacidad/retención, host y límites de coste.
+  - Hecho cuando: proveedor/modelo, fuentes por sector, manejo de PII, retención, rate limit, host y coste máximo tienen una decisión aprobada.
 
 - [ ] T7. Conectar la salida revisada del equipo a la landing.
   - Hecho cuando: la página recibe una salida conforme al contrato tras una revisión aprobada; no depende del catálogo fijo del prototipo, no exige correo y comunica con claridad estados limitado/bloqueado.
 - [ ] T8. Validar la experiencia de extremo a extremo con sectores cubiertos y un caso sin evidencia.
   - Hecho cuando: se demuestra selección, generación, revisión independiente y renderizado; el caso sin evidencia no inventa una respuesta y todos los RF tienen evidencia enlazada.
+
+- [x] T9. Elaborar Technical Blueprint del MVP público sectorial siguiendo la estructura A–O del Prompt Maestro.
+  - Hecho cuando: define arquitectura, agentes, grafo, contratos, memoria, routing, permisos, seguridad, observabilidad, UX, API, validación, infraestructura y coste, ajustados al alcance transversal sin datos de empresa.
+- [x] T10. Definir contratos estructurados de handoff entre las etapas del equipo.
+  - Hecho cuando: cada fase dispone de payload discriminado, referencias a evidencia, estado, confianza y handoff siguiente en JSON Schema.
