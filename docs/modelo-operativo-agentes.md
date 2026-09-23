@@ -1,71 +1,79 @@
 # Modelo operativo de agentes
 
-## Jerarquía
+## Estado y autoridad
 
-```text
-CONSULTING — Director de agentes y responsable de la dirección
-├── COORDINADOR — control de objetivos, pendientes, bloqueos e informes
-├── CALIDAD — validación funcional, datos, automatizaciones y outputs IA
-├── Estrategia y negocio
-├── Diagnóstico empresarial
-├── Automatización e integraciones
-├── IA y conocimiento
-├── Comercial
-├── Marketing y contenidos
-├── Soporte y éxito del cliente
-├── Seguridad, legal y protección de datos
-├── Finanzas, suscripciones y rentabilidad
-└── Plataforma y datos
-```
+Este documento describe el diseño propuesto del equipo. El MVP aún no ejecuta agentes sobre casos reales: el artefacto de prototypes/diagnostico/ es una visualización determinista y ficticia. No hay backend, persistencia, modelo conectado, investigación web ni operaciones con clientes.
 
-La jerarquía anterior es el mapa de capacidades a futuro; **no significa que todos esos agentes se vayan a construir ahora**. Para el diagnóstico MVP se definen solo cinco roles lógicos, ejecutables incluso dentro de un único servicio secuencial. Su alcance vigente está en [spec 004](../specs/004-diagnostico-equipo-agentes/spec.md).
+La especificación normativa es specs/004-diagnostico-equipo-agentes/spec.md. Sus requisitos y decisiones pendientes prevalecen sobre ejemplos de esta página. Las decisiones de vertical, proveedor, precio, tratamiento de datos reales, despliegue y arquitectura productiva requieren validación y aprobación explícitas.
 
-## Equipo lógico del MVP de diagnóstico
+## Dos niveles de organización
 
-| Rol | Propósito | Entradas | Salidas | Límites y condición de parada |
-|---|---|---|---|---|
-| GO Director | Coordinar objetivo, tareas y revisión del diagnóstico | objetivo, alcance autorizado, caso y límites | plan, asignaciones, consolidación y estado | no ejecuta acciones externas ni aprueba su propio informe; pausa ante falta de permiso, evidencia o límite |
-| Company Research | Recopilar evidencia empresarial pública permitida | empresa, URL aportada y fuentes aprobadas | afirmaciones con fuente, fecha y confianza | no declara conocer la operación interna ni recopila PII innecesaria; para si no hay fuente permitida |
-| Business Model Analyst | Resumir oferta y operación conocida y proponer preguntas | evidencia de investigación y respuestas de entrevista | resumen, mapa inicial y vacíos | no completa hechos ausentes; distingue declaración de cliente de observación |
-| Pain Point Detector | Organizar fricciones expresadas e hipótesis | respuestas confirmadas, mapa y evidencia | problemas priorizados, afectados, impacto a validar | no presenta inferencias como hechos ni calcula ahorros sin datos; pregunta o marca desconocido |
-| AI Opportunity Agent | Comparar mejoras posibles y priorizarlas | problemas revisados, contexto, restricciones | oportunidades con esfuerzo, riesgo, dependencias y validación; incluye alternativa sin IA | no promete ROI ni compra/conecta herramientas; escala a revisión humana ante datos sensibles o compromiso comercial |
+### Gobierno y calidad
 
-Los especialistas de proceso, ROI, arquitectura, demos, ventas, propuestas, implantación, seguridad y QA detallada quedan para etapas posteriores del prompt maestro. Se incorporan solo con una especificación y una decisión de alcance.
-
-## Director: CONSULTING
-
-CONSULTING recibe el objetivo aprobado, formula un plan, asigna responsables y define criterios de éxito. Puede leer el estado consolidado, pero no puede cambiar precios, contratos, permisos, pagos o enviar comunicación sensible sin una aprobación humana registrada. Cierra un ciclo solo cuando el Coordinador declara ausencia de pendientes críticos y Calidad aporta evidencia de aceptación.
-
-## Coordinador
-
-Mantiene el registro de objetivos, dependencias, responsables, bloqueos y decisiones. Cada ciclo revisa: alcance, progreso frente a criterios, tareas sin dueño, vencimientos, costes, riesgos y acciones no ejecutables. Emite al Director un informe con: estado (verde/ámbar/rojo), evidencia, pendientes, bloqueos, decisión solicitada y recomendación. No resuelve silenciosamente un bloqueo ni marca una tarea como completa sin evidencia.
-
-## Calidad
-
-Es independiente de quien implementa. Verifica criterios de aceptación, aislamiento de tenant, permisos, datos de prueba, recuperación de fallos, resultados de IA y accesibilidad. Puede bloquear la activación de un flujo. Clasifica los defectos por severidad y deja evidencia reproducible.
-
-## Especialistas y misión
-
-| Agente | Subfunciones principales | Entregable |
+| Función | Responsabilidad | Autoridad y límite |
 |---|---|---|
-| Estrategia y negocio | sectores, oferta, pricing, márgenes | hipótesis y paquete validable |
-| Diagnóstico empresarial | procesos, tiempos, herramientas, tareas manuales | informe priorizado y mapa AS-IS/TO-BE |
-| Automatización | APIs, CRM, email, Workspace, formularios, webhooks | diseño, prueba, runbook y límites |
-| IA y conocimiento | prompts, RAG, OCR, evaluación y coste | asistente acotado y evaluación |
-| Comercial | leads, cualificación, propuesta, seguimiento | siguiente mejor acción aprobable |
-| Marketing | SEO, landing, contenido, campañas y conversión | activo con fuente y CTA única |
-| Soporte/éxito | tickets, satisfacción, renovación y expansión | resolución, SLA e informe mensual |
-| Seguridad/legal | consentimiento, permisos, retención y proveedores | riesgo y necesidad de revisión humana |
-| Finanzas | consumo, capacidad, facturación y margen | control de plan y rentabilidad |
-| Plataforma/datos | arquitectura, datos, integración y observabilidad | cambio técnico verificable |
+| CONSULTING / responsable de producto | Decide prioridades y objetivos aprobados del producto | No delega a agentes la aprobación de precios, contratos, permisos, pagos o comunicaciones sensibles |
+| COORDINADOR | Mantiene objetivos, responsables, dependencias, bloqueos y estado de tareas | No elimina bloqueos ni declara completado sin evidencia |
+| CALIDAD | Revisa evidencia, controles, consistencia, accesibilidad y criterios de aceptación | En el MVP es una función de revisión humana independiente, no un sexto agente automático |
+| Revisor humano del diagnóstico | Contrasta el borrador y registra compartir, pedir cambios o cerrar | Su aprobación habilita únicamente la entrega del diagnóstico; no aprueba una propuesta ni una implementación |
 
-## Contrato universal de ejecución
+### Equipo lógico del diagnóstico
 
-Cada `AgentRun` incluye: objetivo, tenant, alcance autorizado, entradas y fuentes, supuestos, plan, acción solicitada/ejecutada, resultado, hechos/hipótesis/recomendaciones, confianza, coste, artefactos, aprobador cuando existe, errores y eventos de auditoría. Las fuentes no autorizadas se rechazan.
+Los cinco roles son etapas secuenciales que pueden ejecutarse en un único servicio. La tabla define el contrato mínimo; no significa que haya cinco procesos, modelos o servicios desplegados.
 
-## Niveles de autonomía
+| Orden | Rol | Entrada autorizada | Entregable interno | No puede hacer | Se detiene cuando |
+|---|---|---|---|---|---|
+| 1 / 5 | GO Director | objetivo, caso/organización, alcance, permisos y límites | plan, asignación secuencial, estado y consolidación trazable | ampliar permisos, aprobar su propio informe o iniciar acciones externas | falta propósito, permiso, límite, revisor o aparece un bloqueo |
+| 2 | Company Research | empresa o URL aportada y fuentes públicas explícitamente permitidas | afirmaciones públicas con URL, fecha, contexto y confianza | inferir procesos internos, rastrear sin autorización o recopilar datos personales innecesarios | no existe fuente permitida o la fuente no respalda una afirmación |
+| 3 | Business Model Analyst | afirmaciones trazables y respuestas confirmadas de entrevista | resumen de clientes, propuesta de valor, canales, operación conocida y vacíos | convertir declaraciones en hechos observados o completar datos ausentes | hay contradicciones que cambian el alcance o falta información esencial |
+| 4 | Pain Point Detector | proceso confirmado, fricciones declaradas y evidencia referenciada | problemas, persona afectada, evidencia, impacto cualitativo e hipótesis separadas | calcular ahorro/ROI sin datos ni presentar hipótesis como certeza | impacto o causa dependen de datos no confirmados |
+| 5 | AI Opportunity Agent | problemas revisados, contexto, restricciones y dependencias | opciones priorizadas, alternativa sin IA, valor cualitativo, esfuerzo, riesgo y validación | prometer resultados, comprar/conectar herramientas o comprometer recursos | hay datos sensibles, riesgo alto o decisión comercial sin responsable humano |
 
-- A0: consultar, clasificar o borrador interno.
-- A1: ejecutar un flujo reversible previamente aprobado.
-- A2: proponer una acción externa; exige revisión humana.
-- A3: precios, pagos, contratos, permisos, eliminación, comunicaciones sensibles o datos personales: aprobación humana explícita y evidencia.
+GO Director inicia el run, asigna el alcance autorizado y consolida las salidas; los roles 2–5 responden solo a ese alcance; el Director pausa o prepara el borrador y no puede aprobarlo. Research puede omitirse si no se ha autorizado una fuente pública. La entrevista y la revisión humana no son tareas autónomas de estos cinco roles.
+
+## Recorrido de punta a punta
+
+1. **Consulta:** la landing prepara un borrador de correo local. Una persona revisa y envía el mensaje manualmente; el sitio no recibe ni almacena el contenido.
+2. **Entrevista:** una persona confirma el proceso, los roles implicados, frecuencia, excepciones, herramientas, tiempos, impacto y restricciones. Si la respuesta falta, se pregunta o se registra como desconocida.
+3. **G0 — alcance:** responsable y GO Director identifican propósito, caso/organización, datos autorizados, límites, responsable de revisión y criterio para detenerse. Sin ello no comienza el análisis real.
+4. **Ejecución secuencial:** Director → investigación pública opcional → análisis del modelo → detección de fricciones → oportunidades.
+5. **G1 — evidencia:** cada afirmación tiene clasificación epistémica. KNOWN lleva fuente y fecha; INFERRED explica razonamiento y confianza; ASSUMED se presenta como escenario; UNKNOWN queda como pregunta o vacío.
+6. **G2 — revisión del diagnóstico:** una persona independiente contrasta hechos, hipótesis, vacíos y oportunidades. Registra compartir, pedir cambios o cerrar. Solo esta puerta habilita la entrega del diagnóstico.
+7. **G3 — propuesta:** si se decide preparar una propuesta, alcance, exclusiones, precio, calendario, datos, riesgos y éxito esperado empiezan en estado pendiente de aprobación.
+8. **G4 — aprobación de alcance:** una persona autorizada aprueba explícitamente condiciones y alcance. Sin aprobación se bloquean implementación, gasto, integraciones y comunicaciones de compromiso.
+9. **MVP/piloto y feedback:** quedan fuera del prototipo y requieren especificación, permisos, controles operativos y aprobación propios. Después se registra evidencia para continuar, ajustar o cerrar.
+
+Una revisión del informe no equivale a aprobación comercial. La recomendación del agente nunca constituye aprobación de vertical, precio, compra, contrato, acceso, piloto o despliegue.
+
+## Evidencia y oportunidad
+
+Cada afirmación debe clasificarse como KNOWN, INFERRED, ASSUMED o UNKNOWN. El contrato conceptual añade texto, fuente o referencia de evidencia, fecha observada, razonamiento y confianza cuando corresponda. Una fuente pública no se usa para afirmar cómo funciona la operación interna.
+
+Cada oportunidad incluye problema, evidencia referenciada, persona afectada, opción sin IA, valor esperado cualitativo, esfuerzo, riesgos, dependencias y método de validación. ROI, ahorro, precio y plazo no se inventan. Si la mejor recomendación es no automatizar, el informe debe poder decirlo.
+
+## Contrato conceptual de ejecución
+
+Cada AgentRun debe poder vincularse a case_id, organization_id, etapa y versión de contrato, con objetivo, alcance permitido, entradas/fuentes, rol responsable, estado, salida, revisiones y eventos de pausa/error. Las afirmaciones y oportunidades siguen las estructuras de spec 004.
+
+Es un contrato de diseño, no un esquema de base de datos ni una API aprobados. Los datos de contacto y otros datos personales se excluyen hasta que se aprueben finalidad, minimización, acceso, aviso/base aplicable, retención, exportación y borrado. Identidad, almacenamiento, cifrado, versionado, idempotencia, reintentos y límites de coste/tiempo se decidirán en el Technical Blueprint.
+
+## Pausa, auditoría y recuperación
+
+- Pausar ante duda de permiso, evidencia insuficiente, contradicción material, salida inconsistente, dato sensible, límite o error.
+- Registrar motivo, paso, artefacto pendiente y decisión/responsable de reanudación con datos minimizados.
+- No reintentar ni reanudar de forma que duplique una acción externa; en el MVP no hay acciones externas.
+- Permitir cerrar el caso sin recomendar tecnología.
+- Para un futuro backend, definir auditoría, idempotencia, límites, reintentos, pausa, reanudación y recuperación antes de persistir casos reales.
+
+## Autonomía
+
+- **A0 — analizar:** clasificar, preguntar y preparar borradores internos dentro del alcance.
+- **A1 — flujo reversible autorizado:** no está habilitado por el prototipo actual; requiere un flujo aprobado y controles.
+- **A2 — proponer acción externa:** exige revisión humana explícita antes de actuar.
+- **A3 — acción sensible:** precios, pagos, contratos, permisos, eliminación, comunicaciones sensibles y datos personales requieren aprobación humana registrada.
+
+El prototipo local solo demuestra A0 con datos ficticios. No ejecuta acciones A1–A3.
+
+## Elementos futuros
+
+Estrategia sectorial, ROI, arquitectura de solución, investigación de software, generación de demos, propuesta comercial, implementación, QA automatizada, seguridad especializada, soporte y marketing son capacidades futuras. Cada una necesita especificación y decisión de alcance antes de construirse; no forman parte del equipo automatizado MVP de cinco roles.

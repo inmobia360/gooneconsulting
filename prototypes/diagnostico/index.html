@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17162b">
+  <meta name="description" content="Prototipo local y sintético de Go Once Diagnose, con evidencia trazable y revisión humana.">
+  <title>Go Once Diagnose — prototipo local</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al diagnóstico</a>
+  <header class="topbar">
+    <a class="brand" href="../landing/index.html" aria-label="Go Once Consulting, prototipo local">
+      <img src="../landing/assets/go-once-consulting-logo.png" alt="Go Once Consulting" width="205" height="46">
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="product-label">DIAGNOSE</span>
+    </a>
+    <div class="topbar-right">
+      <span class="local-chip"><span aria-hidden="true"></span> PROTOTIPO LOCAL</span>
+      <button class="quiet-button" id="reset-demo" type="button">Reiniciar demo</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="intro">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="eyebrow-mark"></span> ESPACIO DE TRABAJO · CASO SINTÉTICO</p>
+        <h1>Un diagnóstico que deja claro <em>qué sabemos.</em></h1>
+        <p class="intro-text">Revisa cómo una consulta se convierte en evidencia, oportunidades y preguntas abiertas. Cada conclusión permanece como borrador hasta la revisión de una persona.</p>
+      </div>
+      <aside class="scope-card" aria-label="Límites de la demostración">
+        <span class="scope-icon" aria-hidden="true">◎</span>
+        <div><strong>Sin conexión</strong><p>Los datos son ficticios. Nada se envía ni se guarda al cerrar o recargar esta página.</p></div>
+      </aside>
+    </section>
+
+    <div class="workspace">
+      <aside class="case-rail" aria-label="Resumen del caso">
+        <div class="rail-heading"><span>CASO</span><span class="case-code">GO / 001</span></div>
+        <div class="case-name"><span class="case-avatar" aria-hidden="true">CN</span><div><strong>Clima Norte Demo</strong><small>Empresa inventada</small></div></div>
+        <div class="rail-rule"></div>
+        <dl class="case-facts">
+          <div><dt>Sector</dt><dd>Servicios técnicos</dd></div>
+          <div><dt>Etapa</dt><dd><span class="stage-pill">Diagnóstico</span></dd></div>
+          <div><dt>Alcance</dt><dd>Coordinar avisos, visitas y presupuestos</dd></div>
+        </dl>
+        <div class="scope-callout"><span aria-hidden="true">i</span><p>El ejemplo parte de una entrevista ficticia. No se ha investigado ninguna empresa real.</p></div>
+        <nav class="rail-nav" aria-label="Secciones del diagnóstico">
+          <a href="#team"><span class="nav-icon" aria-hidden="true">◌</span> Equipo lógico <span>05</span></a>
+          <a href="#evidence"><span class="nav-icon" aria-hidden="true">≋</span> Evidencia <span>04</span></a>
+          <a href="#opportunities"><span class="nav-icon" aria-hidden="true">↗</span> Oportunidades <span>01</span></a>
+          <a href="#review"><span class="nav-icon" aria-hidden="true">□</span> Revisión humana <span>!</span></a>
+        </nav>
+        <div class="rail-foot"><span class="pulse-dot"></span> No hay tareas externas activas</div>
+      </aside>
+
+      <div class="content">
+        <section class="brief-card" aria-labelledby="brief-title">
+          <div class="brief-head">
+            <div><p class="eyebrow">OBJETIVO DEL ANÁLISIS</p><h2 id="brief-title">Entender el flujo de trabajo</h2></div>
+            <span class="draft-status" id="run-status"><i></i> Borrador sintético</span>
+          </div>
+          <p class="brief-description">El equipo revisa un proceso concreto, separa lo declarado de lo que falta confirmar y propone un siguiente paso pequeño. El sistema no presupone que haga falta IA.</p>
+          <form id="objective-form" class="objective-form">
+            <label for="objective">Pregunta que guía esta demostración</label>
+            <div class="input-row">
+              <input id="objective" name="objective" maxlength="160" value="¿Cómo evitar que se pierda el seguimiento entre el aviso y el presupuesto?" required>
+              <button class="primary-button" type="submit"><span id="run-button-label">Reproducir análisis</span><span aria-hidden="true">↗</span></button>
+            </div>
+            <p class="field-note">La secuencia se reproduce en esta pestaña. El informe visible es un ejemplo sintético fijo; no se recalcula con esta pregunta.</p>
+            <p id="run-log" class="run-log" role="status" aria-live="polite">La secuencia no se ha reproducido todavía.</p>
+          </form>
+        </section>
+
+        <section class="section-block" id="team" aria-labelledby="team-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">ORQUESTACIÓN DETERMINISTA</p><h2 id="team-title">Cinco roles, un borrador revisable.</h2></div>
+            <span class="section-meta">EJECUCIÓN LOCAL <b>·</b> SIN MODELOS</span>
+          </div>
+          <ol class="role-list" id="role-list">
+            <li class="role-row">
+              <span class="role-index">01</span><span class="role-glyph director" aria-hidden="true">G</span>
+              <div class="role-copy"><strong>GO Director</strong><p>Fija el alcance y comprueba límites antes de consolidar.</p></div>
+              <span class="role-result">Alcance acotado</span><span class="role-check" aria-label="Listo">✓</span>
+            </li>
+            <li class="role-row">
+              <span class="role-index">02</span><span class="role-glyph research" aria-hidden="true">R</span>
+              <div class="role-copy"><strong>Company Research</strong><p>En esta demo no consulta la web: registra solo la fuente ficticia.</p></div>
+              <span class="role-result">Entrevista simulada</span><span class="role-check" aria-label="Listo">✓</span>
+            </li>
+            <li class="role-row">
+              <span class="role-index">03</span><span class="role-glyph model" aria-hidden="true">M</span>
+              <div class="role-copy"><strong>Business Model Analyst</strong><p>Ordena la operación conocida y señala lo que falta preguntar.</p></div>
+              <span class="role-result">Vacíos identificados</span><span class="role-check" aria-label="Listo">✓</span>
+            </li>
+            <li class="role-row">
+              <span class="role-index">04</span><span class="role-glyph pain" aria-hidden="true">P</span>
+              <div class="role-copy"><strong>Pain Point Detector</strong><p>Separa la fricción declarada de sus posibles causas.</p></div>
+              <span class="role-result">Hipótesis etiquetada</span><span class="role-check" aria-label="Listo">✓</span>
+            </li>
+            <li class="role-row">
+              <span class="role-index">05</span><span class="role-glyph opportunity" aria-hidden="true">A</span>
+              <div class="role-copy"><strong>AI Opportunity Agent</strong><p>Compara una mejora sencilla con una alternativa con IA.</p></div>
+              <span class="role-result">Alternativa sin IA</span><span class="role-check" aria-label="Listo">✓</span>
+            </li>
+          </ol>
+          <p class="team-footnote"><span aria-hidden="true">↳</span> Son funciones lógicas de una sola demostración, no agentes autónomos ni servicios separados.</p>
+        </section>
+
+        <section class="section-block evidence-block" id="evidence" aria-labelledby="evidence-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">TRAZABILIDAD</p><h2 id="evidence-title">Afirmaciones y preguntas abiertas.</h2></div>
+            <button class="text-button" id="show-all" type="button" aria-expanded="false">Ver guía de etiquetas <span aria-hidden="true">＋</span></button>
+          </div>
+          <div class="legend-panel" id="legend-panel" hidden>
+            <p><b>Hecho:</b> consta en la entrada simulada. <b>Inferencia:</b> interpretación razonada, pendiente de confirmar. <b>Supuesto:</b> escenario para explorar. <b>Desconocido:</b> dato que no se ha proporcionado.</p>
+          </div>
+          <div class="evidence-table-wrap" role="region" aria-label="Tabla de afirmaciones, estado y fuente" tabindex="0">
+            <table class="evidence-table">
+              <thead><tr><th scope="col">Afirmación</th><th scope="col">Estado</th><th scope="col">Fuente o razonamiento</th><th scope="col">Confianza</th></tr></thead>
+              <tbody>
+                <tr><td>Los avisos y presupuestos se anotan en herramientas distintas.</td><td><span class="tag known">HECHO</span></td><td>Entrevista ficticia · 23/09/2026 · respuesta a “¿dónde lo apuntas?”</td><td><span class="confidence"><i></i><i></i><i></i><i class="off"></i><i class="off"></i> Media</span></td></tr>
+                <tr><td>Puede haber reentrada de información al pasar de aviso a presupuesto.</td><td><span class="tag inferred">INFERENCIA</span></td><td>Dos registros separados podrían requerir copiar datos. Confirmar con la persona.</td><td><span class="confidence"><i></i><i></i><i class="off"></i><i class="off"></i><i class="off"></i> Baja</span></td></tr>
+                <tr><td>Cuántos avisos quedan sin seguimiento cada semana.</td><td><span class="tag unknown">DESCONOCIDO</span></td><td>No hay recuento en la entrevista ficticia. Preguntar antes de priorizar.</td><td><span class="confidence no-confidence">Sin dato</span></td></tr>
+                <tr><td>Un registro compartido podría bastar para probar el cambio.</td><td><span class="tag assumed">SUPUESTO</span></td><td>Opción de prueba, no solución elegida. Revisar restricciones y adopción.</td><td><span class="confidence no-confidence">Por validar</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="evidence-note"><span aria-hidden="true">!</span><p>La información pública o incompleta no demuestra cómo funciona una operación interna. Esta vista no contiene investigación externa.</p></div>
+        </section>
+
+        <section class="section-block opportunity-block" id="opportunities" aria-labelledby="opportunity-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">SIGUIENTE PASO POSIBLE</p><h2 id="opportunity-title">Probar lo simple antes de automatizar.</h2></div>
+            <span class="priority-chip"><span></span> POR VALIDAR</span>
+          </div>
+          <article class="opportunity-card">
+            <div class="opportunity-main">
+              <div class="opportunity-icon" aria-hidden="true">↗</div>
+              <div><span class="option-label">OPCIÓN SIN IA</span><h3>Un único registro visible para el estado de cada aviso.</h3><p>Usar una herramienta que el negocio ya tenga para anotar responsable, próxima acción y fecha del presupuesto.</p></div>
+            </div>
+            <div class="opportunity-details">
+              <div><span>Valor esperado</span><b>Cualitativo</b><small>Menos búsquedas de estado</small></div>
+              <div><span>Esfuerzo</span><b>Bajo, por confirmar</b><small>Depende de la herramienta actual</small></div>
+              <div><span>Riesgo</span><b>Adopción</b><small>Que el registro no se actualice</small></div>
+              <div><span>Validación</span><b>Prueba manual breve</b><small>Comparar avisos atendidos y pendientes</small></div>
+              <div><span>Dependencia</span><b>Herramienta existente</b><small>Confirmar acceso y restricciones</small></div>
+            </div>
+            <p class="opportunity-proof"><span>BASE DE LA PROPUESTA</span> Fricción declarada en entrevista ficticia <b>·</b> No se calcula ahorro, ROI ni resultado garantizado.</p>
+          </article>
+          <p class="open-question"><span aria-hidden="true">?</span><span><b>Antes de recomendar:</b> ¿qué ocurre hoy cuando hay que cambiar una visita o falta una pieza? Ese caso puede cambiar la prioridad.</span></p>
+        </section>
+
+        <section class="review-card" id="review" aria-labelledby="review-title">
+          <div class="review-copy">
+            <p class="eyebrow eyebrow-light">PUERTA DE CONTROL</p>
+            <h2 id="review-title">El diagnóstico aún necesita <em>tu criterio.</em></h2>
+            <p>Comprueba las fuentes, corrige las hipótesis y decide si este borrador podría compartirse. La revisión de esta demo no aprueba precio, propuesta, piloto ni implementación.</p>
+            <div class="review-state" id="review-state"><span class="review-indicator"></span><span><b>Pendiente de revisión humana</b><small>Nada se entrega ni se ejecuta desde esta página.</small></span></div>
+          </div>
+          <form class="review-form" id="review-form">
+            <label for="reviewer">Alias de quien revisa <span>(solo demostración)</span></label>
+            <input id="reviewer" name="reviewer" maxlength="40" placeholder="Por ejemplo, Revisor 1" required>
+            <label for="decision">Decisión sobre este borrador</label>
+            <select id="decision" name="decision"><option value="ready">Listo para devolución simulada</option><option value="changes">Pedir cambios antes de compartir</option></select>
+            <button class="review-button" type="submit">Registrar revisión local <span aria-hidden="true">→</span></button>
+            <p id="review-feedback" class="review-feedback" role="status" aria-live="polite">La decisión solo existe en esta pestaña y se borra al recargar.</p>
+          </form>
+        </section>
+
+        <footer class="page-footer">
+          <a href="../landing/index.html">← Volver a Go Once Consulting</a>
+          <span>DEMO SINTÉTICA · SIN PERSISTENCIA · SIN SERVICIOS EXTERNOS</span>
+        </footer>
+      </div>
+    </div>
+  </main>
+  <script src="./script.js"></script>
+</body>
+</html>

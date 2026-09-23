@@ -8,6 +8,11 @@
 - Mantener verticales como hipótesis; validar antes de elegir el piloto.
 - Diseñar los contratos antes de elegir persistencia o proveedor de modelos.
 
+## Estructura operativa documentada para continuar el diseño
+
+El equipo MVP se mantiene en cinco roles lógicos secuenciales; la revisión de CALIDAD es una puerta humana independiente y no un sexto agente ejecutable. Los contratos mínimos por rol y las puertas G0–G4 están descritos en docs/modelo-operativo-agentes.md y deben mantenerse alineados con spec.md.
+
+La visualización local de spec 005 demuestra únicamente la lectura del flujo con información sintética. No satisface T4 de esta especificación, que requiere orquestación determinista de extremo a extremo con pausas, ni autoriza backend o integración real.
 ## Etapas
 
 1. **Cerrar alcance**: revisar esta especificación con propietario; decidir definición de oferta Diagnose, formato del entregable y quién revisa.

@@ -28,6 +28,31 @@ Cinco roles lógicos; no implican cinco servicios autónomos ni ejecución paral
 
 Fuera del primer incremento automatizado: cálculo de ROI financiero, arquitectura detallada de solución, generación de demos, propuestas comerciales finales, prospección a escala, integraciones, implementación y monitorización. Se pueden hacer manualmente tras la revisión y aprobación aplicables.
 
+### Contrato operativo por rol
+
+Los cinco roles son pasos lógicos secuenciales dentro de un mismo caso; no requieren servicios autónomos ni ejecución paralela. El Director abre y cierra la ejecución. Cada paso recibe solo el contexto mínimo necesario y produce un borrador trazable.
+
+| Rol | Entrada autorizada | Salida de trabajo | Límite y condición de parada |
+|---|---|---|---|
+| GO Director | objetivo, organización/caso, alcance y permisos aprobados | plan de ejecución, asignación, presupuesto/límites vigentes, consolidación y estado | no amplía alcance ni aprueba su propio informe; pausa si faltan permiso, responsable humano o límites |
+| Company Research | nombre/URL de empresa aportados o fuente pública explícitamente permitida | afirmaciones públicas con URL, fecha de observación, extracto/contexto y confianza | no rastrea fuentes no autorizadas ni afirma conocer la operación interna; omite el paso si no hay fuente permitida |
+| Business Model Analyst | afirmaciones trazables y respuestas confirmadas de entrevista | resumen de clientes, propuesta de valor, canales, operación conocida y preguntas abiertas | no rellena vacíos; separa declaración de entrevista y observación pública; pausa ante contradicciones que afecten al alcance |
+| Pain Point Detector | proceso descrito/confirmado, fricciones declaradas y evidencia enlazada | problemas con persona afectada, evidencia, posible impacto cualitativo y preguntas de validación | no convierte una hipótesis en hecho ni calcula ahorros; pregunta o marca UNKNOWN |
+| AI Opportunity Agent | problemas revisados, contexto, restricciones y dependencias conocidas | opciones ordenadas que incluyen alternativa sin IA, valor cualitativo, esfuerzo, riesgo, dependencia y validación | no promete ROI, compra ni conecta herramientas, ni redacta compromisos; escala datos sensibles o decisiones comerciales a revisión |
+
+### Secuencia y puertas de control
+
+| Puerta | Responsable | Condición para avanzar | Si no se cumple |
+|---|---|---|---|
+| G0 — alcance | persona responsable + GO Director | objetivo, organización/caso, fuente de datos, propósito, alcance y revisor humano identificados | no iniciar análisis; pedir aclaración o autorización |
+| G1 — evidencia | cada rol + GO Director | toda afirmación tiene etiqueta; KNOWN tiene fuente y fecha; inferencias explican razonamiento y confianza | devolver al rol, marcar UNKNOWN o pausar |
+| G2 — diagnóstico | revisor humano independiente de la ejecución | hechos, hipótesis, vacíos y oportunidades contrastados; decisión de compartir registrada | no entregar; solicitar cambios o cerrar |
+| G3 — propuesta | propietario/representante autorizado | alcance, exclusiones, precio, calendario, datos, riesgos y éxito esperado revisados explícitamente | mantener pending_approval; no comprometer recursos |
+| G4 — MVP/piloto | aprobación humana y controles operativos listos | alcance y condiciones aprobadas; entorno, datos y permisos cumplen la especificación del piloto | bloquear implementación, integraciones, gasto y comunicaciones de compromiso |
+
+La secuencia operativa es consulta → entrevista → GO Director → investigación permitida → análisis de modelo → detección de fricciones → oportunidades → revisión humana → propuesta pendiente → aprobación explícita → piloto aprobado → feedback. Investigación pública es opcional; no sustituye la entrevista sobre operación interna. La etapa G2 aprueba solamente compartir el diagnóstico. No aprueba una propuesta, compra, piloto ni implementación.
+
+Si falta permiso, fuente, evidencia esencial o límite, si hay contradicción material, error, límite de coste/tiempo o salida inconsistente, GO Director marca la ejecución pausada con causa y artefacto pendiente. La reanudación requiere resolver la causa y registrar quién la autorizó; los detalles de idempotencia, retry y persistencia se resolverán en el Blueprint antes de backend.
 ## Recorrido y puertas de control
 
 1. **Consulta/intake**: sector, reto y datos de contacto aportados voluntariamente; minimización, propósito y consentimiento deben definirse antes de conectar backend.
