@@ -77,3 +77,7 @@ El prototipo local solo demuestra A0 con datos ficticios. No ejecuta acciones A1
 ## Elementos futuros
 
 Estrategia sectorial, ROI, arquitectura de solución, investigación de software, generación de demos, propuesta comercial, implementación, QA automatizada, seguridad especializada, soporte y marketing son capacidades futuras. Cada una necesita especificación y decisión de alcance antes de construirse; no forman parte del equipo automatizado MVP de cinco roles.
+
+## Equipo de orientación sectorial de la landing
+
+El [equipo de Resumen Sectorial](../agents/sector-summary/README.md) es distinto del flujo de Diagnose: ofrece patrones generales y opciones posibles según el sector elegido, sin diagnosticar una empresa. Sus seis perfiles no están activos ni conectados a un runtime; las fuentes y la política de publicación siguen pendientes de aprobación.
