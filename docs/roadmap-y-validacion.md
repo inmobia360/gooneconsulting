@@ -1,39 +1,64 @@
-# Roadmap de validación hacia SaaS
+# Hoja de ruta y validación
 
-## Fase 0 — Fundamentos (2 semanas)
+Este roadmap es una secuencia de trabajo, no una promesa de fechas, ventas ni disponibilidad. Se avanza de etapa solo con evidencia y aprobación humana. El alcance detallado del diagnóstico y sus agentes está en [spec 004](../specs/004-diagnostico-equipo-agentes/spec.md).
 
-Definir constitución, specs, modelo de datos, matriz de permisos, arquitectura, plantilla Diagnose, prototipo de landing/portal y cuadro de mando de validación. Salida: demostración navegable y cinco entrevistas con la vertical elegida.
+## Estado actual
 
-## Fase 1 — Producto de entrada (3–4 semanas)
+- Existe un prototipo estático local de landing y consulta por sector (`prototypes/landing/`).
+- La consulta abre un borrador de correo manual; no hay backend ni persistencia.
+- Las especificaciones 001–004 describen fundación, landing, recorrido Go Once Business y equipo inicial de diagnóstico.
+- La selección del vertical, el precio, la oferta final y la arquitectura técnica están pendientes.
+- No hay autenticación, almacenamiento servidor, secretos gestionados, conectores reales, cobros ni operaciones con clientes activas.
 
-Landing, formulario con consentimiento, CRM de leads, agenda de entrevista, cuestionario, generador de informe con revisión humana y propuesta aprobable. Criterio: vender 3 Diagnose y medir conversión hacia implantación.
+## Fases de trabajo
 
-## Fase 2 — MVP de entrega (5–7 semanas)
+### 0. Consolidar alcance y decisiones
 
-Portal de cliente, proyectos e hitos, tareas, documentos, tickets, métricas base, un asistente de IA acotado y dos automatizaciones demostrables: captación→CRM y seguimiento de propuesta. Criterio: dos clientes usan el flujo completo y cada uno obtiene una métrica de valor validada.
+Revisar la landing y las especificaciones; aprobar entregables de Diagnose, preparación del cliente y responsabilidad de revisión. Comparar los sectores candidatos con entrevistas, acceso, recurrencia e impacto. Resolver privacidad y consentimiento antes de recoger datos reales.
 
-## Fase 3 — Care y vertical inmobiliario (4–6 semanas)
+**Salida:** oferta y problema de validación claros, vertical piloto elegido o decisión documentada de seguir transversal.
 
-Planes, límites, consumos, informe mensual, biblioteca de plantillas inmobiliarias, observabilidad y runbooks. Criterio: 5 clientes activos, al menos 70 % de uso mensual de portal o reporte entregado, sin incidentes P1 abiertos.
+### 1. Technical Blueprint
 
-## Fase 4 — Repetibilidad (trimestre siguiente)
+Definir la arquitectura mínima, flujo de ejecución de cinco roles lógicos, contratos de datos versionados, permisos, aislamiento, privacidad, coste, observabilidad, evaluación y recuperación. Registrar alternativas y razones; no introducir infraestructura por anticipado.
 
-Vertical de automoción y servicios/asesorías tras evidencia de demanda, conectores priorizados, onboarding semiautomático, medición de margen y catálogo de automatizaciones. Criterio: reducir 30 % el esfuerzo de implantación por vertical respecto al primer proyecto.
+**Salida:** Blueprint revisado y aprobable, con riesgos y criterios de salida.
 
-## Fase 5 — Preparación SaaS
+### 2. Prototipo sintético
 
-Autoservicio limitado, subcuentas, API, marca blanca, límites técnicos y facturación madura. Solo se inicia si hay 8–12 clientes recurrentes, MRR de 3.600–5.400 €, retención y soporte sostenibles.
+Demostrar entrevista y diagnóstico con datos ficticios, resultados trazables y revisión humana. Probar información incompleta o contradictoria, recomendación sin IA, errores, límites de coste, pausa y aislamiento.
 
-## Métricas por cliente y cartera
+**Salida:** evidencia de que el flujo es útil, legible, seguro y recuperable en el alcance definido.
 
-Captación: lead→diagnóstico, diagnóstico→implantación, origen y CAC. Operación: horas ahorradas, tareas automatizadas, tiempo de respuesta, errores e incidencias. Comercial: propuestas enviadas, tasa de seguimiento y oportunidades recuperadas. Finanzas: MRR, ARPA, margen, coste de APIs/IA y renovación. IA: ejecuciones, coste, latencia, tasa de aceptación y escalados humanos.
+### 3. Validación de problema y oferta
 
-## Riesgos a vigilar
+Realizar entrevistas con profesionales si hay acceso y consentimiento. Comparar frecuencia, impacto, soluciones actuales y voluntad de participar; separar declaraciones, observaciones e hipótesis y anonimizar los patrones compartidos.
 
-| Riesgo | Mitigación |
+**Salida:** diagnóstico revisado de la oportunidad, o decisión de cambiar segmento/problema.
+
+### 4. Propuesta y aprobación de piloto
+
+Preparar alcance, entregables, exclusiones, precio, plazo, datos, riesgos y métricas. La propuesta queda `pending_approval`; solo una decisión humana explícita habilita el piloto.
+
+**Salida:** aprobación auditable o cierre sin construir.
+
+### 5. MVP/piloto, feedback y decisión
+
+Construir únicamente el alcance aprobado, con datos y permisos autorizados; registrar incidencias, valor, coste y feedback. Decidir iterar, ampliar, convertir en Go Once Business o cerrar.
+
+**Salida:** decisión respaldada por evidencia; no escalar por inercia.
+
+## Métricas que se definirán por piloto
+
+Antes de iniciar un piloto, fijar línea base, método y responsable para utilidad del diagnóstico, reconocimiento de problemas, calidad de evidencia, resultado operativo, aceptación del cliente, coste/latencia y defectos. No publicar objetivos numéricos ni ROI si no están acordados y respaldados.
+
+## Riesgos transversales
+
+| Riesgo | Control |
 |---|---|
-| construir demasiado pronto | gates de evidencia y pilotos pagados |
-| acceso excesivo a datos | alcance por tenant, inventario y permisos mínimos |
-| automatización frágil | idempotencia, alertas, pruebas y runbooks |
-| promesas de IA no fiables | fuentes, evaluación, límites y revisión humana |
-| margen erosionado por soporte | límites de plan, registro de horas y catálogo repetible |
+| construir antes de validar | puertas entre fases y alcance aprobado antes del MVP |
+| inferir operaciones desde una web pública | entrevista y etiqueta de evidencia/confianza |
+| mezclar información de empresas | casos y permisos aislados; patrones anonimizados |
+| exposición o uso excesivo de datos | minimización, propósito, acceso, retención y borrado definidos antes de backend |
+| salida IA poco fiable | fuentes, evaluación, revisión humana y opción de parar |
+| complejidad o coste prematuro | prototipo sintético primero; arquitectura decidida en Blueprint |

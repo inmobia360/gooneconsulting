@@ -1,45 +1,39 @@
-# Arquitectura y modelo de datos
+# Arquitectura y datos — criterios para el Blueprint
 
-## Decisión de producto
+## Estado
 
-Construir un monolito modular multi-tenant durante el MVP. Separar dominios y contratos desde el inicio, pero no microservicios. Las integraciones asíncronas pasan por una cola y una capa de conectores; ninguna credencial de cliente queda en el navegador.
+No hay arquitectura ni proveedores aprobados. Este documento fija criterios para el Technical Blueprint descrito en [spec 004](../specs/004-diagnostico-equipo-agentes/spec.md); las opciones siguientes son preguntas de diseño, no instrucciones de compra o despliegue.
 
-## Alternativas técnicas
+## Principios
 
-| Criterio | MVP rápido y económico | SaaS escalable |
-|---|---|---|
-| Web y API | Next.js + TypeScript, API routes | Next.js/TypeScript + API modular (NestJS o Fastify) |
-| Datos | PostgreSQL gestionado + Prisma | PostgreSQL con RLS, migraciones, réplicas y pooler |
-| Auth | Auth.js o Supabase Auth | proveedor OIDC con SSO, SCIM futuro y MFA |
-| Archivos | S3 compatible gestionado | S3 compatible con cifrado KMS, lifecycle y AV scan |
-| Flujos | n8n/Make con webhooks firmados | workers (Temporal/BullMQ), conectores versionados |
-| IA | proveedor LLM detrás de gateway propio | gateway multmodelo, evaluaciones y observabilidad |
-| Observabilidad | Sentry + logs estructurados | OpenTelemetry, SIEM, métricas y auditoría inmutable |
+- Empezar por un prototipo local, sintético y de alcance pequeño; no construir un SaaS completo antes de validar Diagnose.
+- Preferir una aplicación modular simple si cubre requisitos de autorización, aislamiento, auditoría y operación.
+- Separar organizaciones, casos, permisos, fuentes y memoria; probar explícitamente el aislamiento.
+- Validar entradas en límites; no exponer credenciales al navegador ni incluir secretos en Git.
+- Cada ejecución debe registrar objetivo, alcance permitido, entradas/fuentes, versión de agente/modelo, resultado, coste, revisión, errores y eventos necesarios para auditar.
+- Poder pausar, reanudar con control y recuperar fallos sin duplicar acciones.
+- No conectar fuentes, CRM, correo, pagos o mensajería hasta especificar finalidad, permiso, seguridad y revisión humana.
 
-Recomendación: alternativa MVP con PostgreSQL, almacenamiento S3, Next.js y n8n en entorno separado. Condiciones para extraer servicios: >30 clientes activos, SLA contractual, límites de ejecución, o un dominio que necesite escalado/seguridad independiente.
+## Preguntas técnicas para el Blueprint
 
-## Dominios funcionales
+| Área | Decisiones por resolver |
+|---|---|
+| Aplicación y orquestación | monolito modular u otra alternativa; ejecución secuencial y límites por agente |
+| Modelos | proveedor(es), ubicación de datos, retención, coste, latencia, fallback y evaluación |
+| Investigación | fuentes públicas permitidas, atribución, términos y límites de recolección |
+| Contratos | esquema JSON, validación, versionado y compatibilidad de cambios |
+| Identidad y datos | autenticación, organización/caso, almacenamiento, cifrado, retención, exportación y borrado |
+| Seguridad | mínimo privilegio, secretos, protección de entradas y revisión de proveedores |
+| Operación | logs minimizados, métricas, alertas, cuotas, pausas, reintentos y recuperación |
+| Interfaz | lenguaje claro, WCAG 2.2 AA, teclado, estados de error y accesibilidad móvil |
+| Despliegue | entorno, responsables, backup, restauración, rollback y criterios de disponibilidad |
 
-`identity` · `organizations` · `crm` · `diagnostics` · `projects` · `work` · `documents` · `proposals` · `billing` · `support` · `automations` · `ai` · `reporting` · `templates` · `audit`.
+## Contrato conceptual `AgentRun`
 
-## Entidades mínimas
+La especificación define el objeto de trabajo mínimo: `case_id`, `organization_id`, etapa, alcance autorizado, afirmaciones con estado (`KNOWN`, `INFERRED`, `ASSUMED`, `UNKNOWN`), fuentes y fecha, oportunidades con referencias a evidencia, revisión humana, estado de propuesta y eventos. Es un contrato conceptual, no un esquema persistido ni una API aprobada.
 
-| Entidad | Campos clave | Regla |
-|---|---|---|
-| Organization | id, nombre, sector, plan, estado | raíz del tenant |
-| User / Membership | user_id, organization_id, role, estado | pertenencia y permisos explícitos |
-| Lead | origen, consentimiento, estado, propietario | ningún contacto sin base/consentimiento registrado |
-| Diagnostic | respuestas, procesos, hallazgos, aprobador | versión inmutable al entregar |
-| Project / Milestone | alcance, estado, fechas, aceptación | evidencia de aceptación por hito |
-| Automation | versión, propietario, estado, límites | pausada por defecto hasta prueba aprobada |
-| AgentRun | objetivo, entradas, fuentes, modelo, coste, confianza | trazabilidad obligatoria |
-| Document | clasificación, owner, retención, acceso | ACL de tenant y propósito |
-| Ticket | prioridad, SLA, estado, tiempo consumido | enlaza horas incluidas |
-| Subscription / Invoice | plan, límites, periodo, estado | pagos solo por proveedor autorizado |
-| AuditEvent | actor, acción, recurso, resultado, correlación | append-only y sin secreto |
+Antes de almacenar datos de personas o empresas se debe decidir base jurídica/aviso aplicable, minimización, control de acceso, retención, borrado, exportación, encargados y respuesta a incidentes con revisión competente. La consulta actual no guarda datos en un servidor.
 
-## Aislamiento, permisos y auditoría
+## Criterios previos a producción
 
-Cada consulta de negocio filtra `organization_id`; las políticas RLS refuerzan esa restricción en base de datos. Roles iniciales: `platform_admin`, `consulting_director`, `coordinator`, `delivery_specialist`, `client_admin`, `client_member`, `client_viewer`. Permisos sensibles (facturar, modificar roles, conectar fuentes, activar automatizaciones y enviar comunicaciones) se conceden por capacidad, con doble confirmación cuando aplique.
-
-El log guarda quién, qué, cuándo, origen, correlación, resultado y versión de flujo/modelo. Nunca guarda tokens, contraseñas, documentos completos ni prompts con datos personales si puede referenciarlos por ID.
+No afirmar disponibilidad de producción hasta verificar autenticación, aislamiento, autorización, gestión de secretos, persistencia protegida, backups y restauración, auditoría, observabilidad, recuperación de fallos, evaluación IA, accesibilidad, privacidad y controles de despliegue. El estado actual es un prototipo local/sintético.

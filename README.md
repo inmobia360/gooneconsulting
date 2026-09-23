@@ -26,7 +26,11 @@ Cada capacidad se define en `specs/` antes de escribirse; se implementa con crit
 - [Hoja de ruta y validación](docs/roadmap-y-validacion.md)
 - [Especificación de la fundación](specs/001-foundation/spec.md)
 - [Plan de la fundación](specs/001-foundation/plan.md)
+- [Diagnóstico y equipo inicial de agentes](specs/004-diagnostico-equipo-agentes/spec.md)
+- [Plan para validar y desarrollar el diagnóstico](specs/004-diagnostico-equipo-agentes/plan.md)
 
 ## Estado
 
 Fase actual: definición fundacional. No hay automatizaciones, cobros ni comunicaciones externas activas. Cualquier conector, uso de datos personales o acción comercial requiere una especificación aprobada y los permisos correspondientes.
+
+El MVP de diagnóstico está definido como una propuesta documental con cinco roles lógicos. La arquitectura técnica, el vertical piloto y la oferta comercial siguen pendientes de validación/aprobación. El prototipo actual continúa siendo local y sintético.

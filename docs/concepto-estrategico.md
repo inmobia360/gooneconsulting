@@ -1,45 +1,44 @@
-# Concepto estratégico — Go Once Business OS
+# Concepto estratégico — Go Once Consulting
+
+## Estado de las decisiones
+
+Este documento describe la dirección de producto a validar. No aprueba precios, calendarios, verticales, capacidades de producto ni inversiones técnicas. La especificación vigente del primer diagnóstico es [004](../specs/004-diagnostico-equipo-agentes/spec.md); la landing y el flujo sectorial se describen en [002](../specs/002-landing/spec.md) y [003](../specs/003-go-once-business-flow/spec.md).
 
 ## Posicionamiento
 
-**Go Once Business OS organiza, automatiza y mejora el funcionamiento diario de pequeños negocios.** Combina diagnóstico operativo, implantación de sistemas y acompañamiento mensual. No es un catálogo de herramientas ni un chatbot aislado: es una capa de operación que convierte procesos dispersos en flujos visibles, medibles y mejorables.
+Go Once Consulting ayuda a autónomos y pequeños negocios a entender un proceso de su actividad, reconocer qué les frena y decidir qué conviene mejorar antes de invertir en tecnología, automatización o IA. La IA es una posible herramienta, no un resultado predeterminado.
 
-## Cliente ideal inicial
+**Go Once Diagnose** es la oferta inicial a concretar y validar. El resultado previsto es un mapa sencillo del proceso, oportunidades priorizadas, una recomendación escrita y una devolución con la persona asignada. Alcance, dedicación, plazo, precio, responsable y experiencia aplicable deben comunicarse de forma verificable antes de que la persona acepte.
 
-Prioridad 1: inmobiliarias y agentes con volumen de leads, seguimiento irregular y documentación repetitiva. Prioridad 2: talleres y pequeños concesionarios. Prioridad 3: asesorías/despachos y empresas de servicios. La primera vertical debe elegirse por acceso real a 5–10 pilotos, dolor frecuente, datos disponibles y velocidad para demostrar valor; se recomienda empezar por inmobiliario por el conocimiento previo declarado.
+**Go Once Business** es una familia potencial de soluciones verticales. Cada vertical requiere evidencia de necesidades repetidas, propuesta independiente y aprobación antes de desarrollar o prometer disponibilidad.
 
-## Oferta empaquetada
+## Segmentos candidatos
 
-| Etapa | Oferta | Resultado tangible | Decisión humana |
-|---|---|---|---|
-| Entrada | Diagnose, 190–390 € | mapa de procesos, prioridades, informe y plan | aceptar alcance |
-| Implantación ligera | Start, desde 990 € | CRM básico, formulario, automatización principal, formación | aprobar diseño |
-| Crecimiento | Growth, desde 2.500 € | captación, seguimiento, propuesta, reseñas e indicadores | aprobar integraciones |
-| Operación inteligente | Intelligence, desde 5.000 € | asistentes, conocimiento, flujos documentales y control | aprobar fuentes y guardrails |
-| Recurrencia | Care, 149–990 €/mes | soporte, mejoras, revisión y reporte mensual | priorizar bolsa de horas |
+Primer grupo para explorar: servicios técnicos a domicilio, profesionales inmobiliarios y despachos profesionales. También pueden investigarse clínicas y bienestar, reformas y construcción, agencias digitales, comercio multicanal y formación. Son candidatos, no un orden comercial aprobado. La selección se basará en acceso a profesionales, frecuencia e impacto del problema, alternativas actuales y disposición para participar en un piloto.
 
-## Recorrido comercial y operativo
+El prompt maestro destaca inmobiliario y automoción; la landing más reciente plantea otros candidatos. Ninguno prevalece sin validación. Las conclusiones de cada empresa se mantienen separadas y no se comparten de forma identificable entre participantes.
 
-1. Landing sectorial con una CTA: **Solicitar diagnóstico**.
-2. Formulario de prediagnóstico y consentimiento; creación de lead con fuente y estado.
-3. Cualificación y entrevista estructurada; el consultor confirma datos.
-4. Diagnose: inventario de procesos, tiempos, herramientas, riesgos y oportunidades priorizadas.
-5. Propuesta con alcance, exclusiones, hitos, precio y plan recomendado; nunca enviada automáticamente sin aprobación.
-6. Onboarding: contrato, pago, usuarios, consentimiento, inventario de accesos y objetivos base.
-7. Implantación por hitos, con pruebas, formación y aceptación del cliente.
-8. Care: ticketing, límites de plan, mejora continua e informe de valor mensual.
+## Recorrido
 
-## Principio de diseño de experiencia
+`Landing → consulta → entrevista → diagnóstico revisado → propuesta → aprobación explícita → MVP/piloto acotado → feedback → iterar o cerrar`
 
-La interfaz no imita una consola SaaS genérica. Su metáfora será un **cuaderno de operaciones**: cada cliente ve una ruta clara con objetivos, sistema activo, pendientes y evidencia de valor. La landing tiene un único objetivo de conversión y la información comercial permanece centralizada en configuración, no dispersa en componentes.
+El diagnóstico puede concluir que basta con mejorar un proceso, usar una herramienta existente o no cambiar nada. Una propuesta queda pendiente hasta que una persona apruebe alcance, precio, tratamiento de datos y criterios de éxito. No se construye ni presenta un MVP sectorial antes de esa aprobación.
 
-Dirección visual sugerida: azul tinta `#102A43`, azul eléctrico controlado `#1D70B8`, arena documental `#F7F3EA`, cobre de decisión `#C46A3A`, grafito `#243B53` y niebla `#E9EEF3`. Tipografía de titulares: `DM Serif Display`; interfaz y lectura: `Manrope`; métricas: `IBM Plex Mono`. El gesto distintivo es una línea de progreso operativa que une el diagnóstico con el impacto medido, no tarjetas decorativas.
+La landing actual es un prototipo estático local: la consulta prepara un borrador `mailto:` que el visitante envía manualmente; no hay backend, almacenamiento ni recepción automática.
 
-## Hipótesis de negocio a validar
+## Hipótesis a validar
 
-- H1: un diagnóstico de pago filtra mejor que una auditoría gratuita y convierte a implantación.
-- H2: en inmobiliario, responder y seguir un lead en menos de 10 minutos eleva la tasa de cita.
-- H3: un informe mensual de horas ahorradas y acciones pendientes reduce cancelación de Care.
-- H4: plantillas por vertical reducen el tiempo de implantación al menos un 30 % sin reducir calidad.
+- Un diagnóstico independiente y accionable puede ser valioso por sí mismo.
+- Algunos problemas operativos se repiten lo suficiente dentro de un segmento como para justificar una solución vertical.
+- La oportunidad prioritaria puede ser una mejora de proceso o una herramienta convencional, además de automatización o IA.
+- Un piloto limitado puede demostrar valor con datos autorizados, criterios de aceptación y revisión humana.
 
-No se consideran hechos hasta medirlos en pilotos.
+No se deben publicar tasas de conversión, ahorros, ROI, testimonios, precios ni tiempos como hechos hasta contar con evidencia y aprobación.
+
+## Principios de experiencia y confianza
+
+- Español peninsular claro, diseño legible y accesible, recorrido breve y CTA coherente con iniciar una consulta.
+- Explicar resultado, preparación, condiciones y quién realizará el trabajo antes de que el usuario acepte.
+- Diferenciar hechos, inferencias, supuestos y desconocidos; citar fuentes y confianza en resultados asistidos por IA.
+- Minimizar datos; evitar credenciales y datos sensibles en la consulta inicial.
+- Revisión humana para propuestas, precios, contratos, permisos, pagos, comunicaciones sensibles y entrega al cliente.
