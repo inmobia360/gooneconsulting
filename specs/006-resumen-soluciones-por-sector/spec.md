@@ -32,6 +32,7 @@ Fuera de alcance: rastreo web autónomo, conectores, almacenamiento de leads, in
 
 ## Trazabilidad con el Prompt Maestro
 
+- Sección 69: el Technical Blueprint se entrega con estructura A–O, adaptando el modelo de datos y memoria para no introducir almacenamiento de visitantes ni datos de empresas.
 - Secciones 62–63: se toma el núcleo reducido de GO Director, research, modelo/procesos, fricciones y oportunidades; solo el nivel público del Scanner.
 - Sección 67: GO Director planifica, ejecuta etapas ordenadas, controla fallos, solicita revisión y sintetiza.
 - Sección 68: cada etapa intercambia JSON versionado con evidencia, confidence numérica y estado KNOWN/INFERRED/ASSUMED/UNKNOWN.
@@ -77,4 +78,4 @@ Esta capacidad documental es de autonomía A0. Publicar fuentes, activar proveed
 
 ## Empaquetado para Codex
 
-Además de los perfiles portables, el repositorio puede incluir definiciones de subagentes de proyecto Codex para coordinación documental y análisis. Estas definiciones no son el runtime de la landing, no autorizan navegación externa y deben limitarse a lectura; la generación pública requiere completar T6 y T7.
+Además de los perfiles portables, el repositorio incluye definiciones de subagentes de proyecto Codex para coordinación documental y análisis. Estas definiciones no son el runtime de la landing, no autorizan navegación externa y deben limitarse a lectura; la generación pública requiere completar T6 y T7.

@@ -1,6 +1,6 @@
 # Equipo de resumen sectorial
 
-Perfiles portables de instrucciones para diseñar una orientación breve de posibles soluciones que se mostrará en la landing al elegir el sector, sin exigir datos de contacto. Son documentos de diseño, no agentes ya conectados ni ejecutables en Codex u otra plataforma.
+Perfiles portables para producir una orientación breve de posibles soluciones por sector, sin exigir datos de contacto. Las instrucciones base viven en Markdown y se empaquetan como subagentes de proyecto Codex en `.codex/agents/`; su descubrimiento debe confirmarse en una sesión Codex local confiable. No están conectados al runtime público de la web.
 
 ## Flujo
 
