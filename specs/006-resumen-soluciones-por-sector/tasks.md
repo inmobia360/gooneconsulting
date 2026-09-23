@@ -22,5 +22,5 @@
   - Hecho cuando: define arquitectura, agentes, grafo, contratos, memoria, routing, permisos, seguridad, observabilidad, UX, API, validación, infraestructura y coste, ajustados al alcance transversal sin datos de empresa.
 - [x] T10. Definir contratos estructurados de handoff entre las etapas del equipo.
   - Hecho cuando: cada fase dispone de payload discriminado, referencias a evidencia, estado, confianza y handoff siguiente en JSON Schema.
-- [ ] T11. Empaquetar los seis roles como agentes de proyecto Codex.
-  - Hecho cuando: existen seis definiciones TOML reconocibles bajo `.codex/agents/`, cada una enlaza un perfil portable, define una misión estrecha, declara sandbox read-only y desactiva web_search; una sesión nueva de Codex los descubre y el revisor puede devolver PASS/REVISE/BLOCK.
+- [x] T11. Empaquetar y verificar los seis roles como agentes de proyecto Codex.
+  - Hecho cuando: existen seis definiciones TOML reconocibles bajo `.codex/agents/`, cada una enlaza un perfil portable, define una misión estrecha, declara sandbox read-only y desactiva web_search; una sesión nueva de Codex los descubre y el revisor devuelve PASS/REVISE/BLOCK en fixtures sintéticos.
