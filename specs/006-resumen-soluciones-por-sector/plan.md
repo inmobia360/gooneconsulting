@@ -2,7 +2,7 @@
 
 ## Arquitectura documental propuesta
 
-Landing → normalizador del sector → Director → Investigación → Mapa modelo/procesos → Fricciones → Oportunidades → Revisión independiente → Director redacta salida conforme al esquema.
+Landing recoge el sector → normalizador → Director → Investigación → Mapa modelo/procesos → Fricciones → Oportunidades → Revisión independiente → Director redacta el resumen conforme al esquema → la landing lo muestra directamente. La consulta por correo es una acción posterior opcional, separada de obtener el resumen.
 
 El MVP debe operar con catálogo curado y fuentes previamente aprobadas. Si no hay cobertura, ofrecer mensaje de límite y una pregunta aclaratoria. Ningún perfil consulta una fuente por su cuenta hasta configurar el runtime y aprobar las fuentes.
 
@@ -25,6 +25,10 @@ El MVP debe operar con catálogo curado y fuentes previamente aprobadas. Si no h
 ## Validación prevista
 
 Revisar perfiles con un sector bien conocido y con uno ambiguo o de evidencia escasa. La revisión documental comprueba orden, límites, handoffs, contrato y casos de bloqueo. No equivale a prueba conductual de un runtime.
+
+## Experiencia de la landing
+
+La página debe presentar el resumen sin solicitar correo. Si el equipo bloquea por falta de cobertura o fuentes aprobadas, la interfaz muestra el límite y permite seguir a una consulta opcional o reformular el sector; no muestra una respuesta inventada.
 
 ## Decisiones pendientes
 

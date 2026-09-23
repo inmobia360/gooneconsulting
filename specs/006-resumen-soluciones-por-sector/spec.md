@@ -6,11 +6,15 @@ La landing permite elegir una actividad económica y recibir una orientación br
 
 La entrada inicial solo identifica el sector y, opcionalmente, una descripción breve del interés del visitante. No hay diagnóstico individual ni datos de empresa.
 
+## Experiencia de la persona visitante
+
+La persona elige su sector y la web le muestra una orientación breve directamente, sin exigir correo ni iniciar una comunicación. La opción de enviar una consulta de contacto es separada y opcional. Si la evidencia no alcanza, la web explica el límite en vez de presentar una respuesta inventada.
+
 ## Alcance y límites
 
 Incluye diseño documental de un equipo de agentes, su flujo de trabajo, un contrato de salida versionado y criterios de revisión. Los perfiles no se ejecutan todavía: falta seleccionar runtime, modelo, fuente autorizada y política de publicación.
 
-No incluye rastreo web autónomo, conectores, almacenamiento de leads, inferir problemas de una empresa concreta, recomendaciones de proveedores, presupuestos, ROI, propuestas comerciales, contacto con visitantes ni despliegue.
+Fuera de alcance: rastreo web autónomo, conectores, almacenamiento de leads, inferir problemas de una empresa concreta, recomendaciones de proveedores, presupuestos, ROI, propuestas comerciales, contacto automático con visitantes ni despliegue.
 
 ## Requisitos (EARS)
 
@@ -19,11 +23,12 @@ No incluye rastreo web autónomo, conectores, almacenamiento de leads, inferir p
 - RF-003: Cuando se presenten afirmaciones sectoriales, el equipo deberá vincular hechos a fuentes autorizadas y separar hechos, inferencias y recomendaciones.
 - RF-004: Cuando una afirmación no tenga evidencia suficiente, el Revisor deberá pedir corrección o bloquear su publicación.
 - RF-005: Cuando se formule una oportunidad, deberá expresar el problema como patrón general, tipo de solución posible, esfuerzo relativo, dependencias y riesgos; no deberá prometer resultados ni ROI.
-- RF-006: Cuando se genere la respuesta final, deberá ser breve, comprensible y expresar que orienta sobre el sector, no diagnostica al visitante.
+- RF-006: Cuando el equipo genere la respuesta, la web deberá mostrar al visitante un resumen breve y comprensible de posibles soluciones para el sector, sin exigir correo ni datos de contacto. El resumen deberá indicar que orienta sobre patrones del sector, no diagnostica su negocio.
 - RF-007: Mientras no haya fuente/runtime aprobados, el flujo deberá detener la investigación externa y solicitar decisión; no inventará citas ni presentará perfiles como operativos.
 - RF-008: Cuando el flujo falle o se pause, deberá conservar un estado de ejecución auditable y un motivo, sin guardar datos personales innecesarios.
 - RF-009: Cuando una entrada no permita identificar el sector, el Director deberá pedir aclaración o devolver un resultado limitado, nunca adivinar.
 - RF-010: Cuando se solicite un sector poco documentado, el equipo deberá informar el límite de evidencia y abstenerse de inventar patrones.
+- RF-011: Cuando se muestre el resumen sectorial, deberá ofrecer una alternativa sin IA cuando sea razonable, explicar límites y diferenciar hechos, hipótesis e ideas posibles en lenguaje claro.
 
 ## Secuencia y equipo
 

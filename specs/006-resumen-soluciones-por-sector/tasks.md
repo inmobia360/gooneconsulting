@@ -12,3 +12,8 @@
   - Hecho cuando: queda evidencia de revisión documental y se declara expresamente que no hubo ejecución con runtime.
 - [ ] T6. Configurar runtime, fuentes aprobadas y prueba conductual.
   - Hecho cuando: proveedor y fuentes aprobados, prueba real reproducible y aceptación de cada RF enlazada.
+
+- [ ] T7. Integrar la salida del equipo en la landing.
+  - Hecho cuando: tras elegir un sector, la página muestra el resumen sin exigir correo; la consulta de contacto sigue separada y opcional, y estados limitado/bloqueado son claros y accesibles.
+- [ ] T8. Validar la experiencia de extremo a extremo con sectores cubiertos y un caso sin evidencia.
+  - Hecho cuando: se demuestra selección, generación, revisión independiente y renderizado; el caso sin evidencia no inventa una respuesta y todos los RF tienen evidencia enlazada.
